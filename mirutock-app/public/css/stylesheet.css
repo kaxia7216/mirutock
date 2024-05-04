@@ -1,0 +1,41 @@
+body{
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  background-color: #E3E3E3;
+}
+
+.main {
+  width: 900px;
+  background-color: #7DD1DF;
+}
+
+header {
+  padding: 0 20px;
+  background-color: #1E95D4;
+  height: 78px;
+  display: flex;
+  justify-content: space-between;
+  /* line-height: 0.5; */
+}
+
+.header-left a {
+  font-size: 32px;
+  text-decoration: none;
+  color: white;
+  line-height: 78px;
+  font-weight: bold;
+}
+
+.header-right a {
+  display: block;
+  font-size: 20px;
+  text-decoration: none;
+  color: white;
+  line-height: 78px;
+}
+
+.header-right a:hover {
+  text-decoration: none;
+  color: #FFCB67;
+}
