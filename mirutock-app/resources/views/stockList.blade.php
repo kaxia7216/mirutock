@@ -11,16 +11,15 @@
   <title>Mirutock</title>
 </head>
 <body>
-  <div class='main'>
-    <header>
+  <header>
       <div class='header-left'>
         <a href="/">Mirutock</a>
       </div>
       <div class='header-right'>
         <a href="#">logout</a>
       </div>
-    </header>
-    <div class='main-contents'>
+  </header>
+  <div class='main-contents'>
       <div class='list-view'>
         <ul>
           <li>
@@ -78,9 +77,26 @@
           <li>r</li>
         </ul>
       </div>
+      <div class='add-button'>
+        <a href="#">
+          <span>+</span>
+        </a>
+      </div>
     </div>
-    <footer></footer>
-  </div>
+  <footer>
+      <a href="#">
+        <img src="" alt="">
+      </a>
+      <a href="#">
+        <img src="" alt="">
+      </a>
+      <a href="#">
+        <img src="" alt="">
+      </a>
+      <a href="#">
+        <img src="/img/fridge_ice.svg" alt="">
+      </a>
+  </footer>
 <script src="{{ asset('js/app.js') }}" type="text/javascript"></script>
 </body>
 </html>
