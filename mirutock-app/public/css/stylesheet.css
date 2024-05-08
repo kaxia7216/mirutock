@@ -51,18 +51,18 @@ header {
 
 .list-view li {
   height: 70px;
-  /* font-size: 25px; */
   background-color: white;
   color: #7DD1DF;
   margin: 20px auto;
   border-radius: 20px;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .list-left {
   font-size: 30px;
+  margin-left: 30px;
 }
 
 .list-center {
@@ -81,9 +81,15 @@ header {
   line-height: 59px;
 }
 
+.list-right {
+  margin-right: 10px;
+}
+
 .list-right button {
   background-color: white;
-  margin-left: auto;
+  border: none;
+  outline: none;
+  cursor: pointer;
 }
 
 .add-button {
@@ -100,11 +106,16 @@ header {
   background-color: #FFCB67;
   border-radius: 50%;
   text-align: center;
+  cursor: pointer;
 }
 
 .add-button a {
   text-decoration: none;
   color: white;
+}
+
+.add-button span {
+  cursor: pointer;
 }
 
 footer {
@@ -113,4 +124,19 @@ footer {
   position: absolute;
   bottom: 0;
   width: 100%;
+}
+
+.link-icons {
+  /* line-height: 63px; */
+  display: flex;
+  justify-content: space-around;
+}
+
+.link-icons a {
+  /* width: 23px; */
+  /* height: 26px; */
+  line-height: 63px;
+  text-decoration: none;
+  color: white;
+  border: none;
 }
