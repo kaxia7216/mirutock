@@ -9,59 +9,25 @@
     <div class='main-contents'>
         <div class='list-view'>
           <ul>
-            <li>
-              <div class='list-left'>
-                <p>いちご</p>
-              </div>
-              <div class='list-center'>
-                <p>残り1パック</p>
-                <p>あと2日</p>
-              </div>
-              <div class='list-right'>
-                <button>
-                  <img src="/img/pencil_icon.svg" alt="edit-button">
-                </button>
-                <button>
-                  <img src="/img/delete_icon.svg" alt="delete-icon">
-                </button>
-              </div>
-            </li>
-            <li>
-              <div class='list-left'>
-                <p>きゅうり</p>
-              </div>
-              <div class='list-center'>
-                <p>残り2本</p>
-                <p>あと1日</p>
-              </div>
-              <div class='list-right'>
-                <button>
-                  <img src="/img/pencil_icon.svg" alt="edit-button">
-                </button>
-                <button>
-                  <img src="/img/delete_icon.svg" alt="delete-icon">
-                </button>
-              </div>
-            </li>
-            <li>
-              <div class='list-left'>
-                <p>牛乳</p>
-              </div>
-              <div class='list-center'>
-                <p>残り1パック</p>
-                <p>あと3日</p>
-              </div>
-              <div class='list-right'>
-                <button>
-                  <img src="/img/pencil_icon.svg" alt="edit-button">
-                </button>
-                <button>
-                  <img src="/img/delete_icon.svg" alt="delete-icon">
-                </button>
-              </div>
-            </li>
-            <li>w</li>
-            <li>r</li>
+            @foreach($stocks as $stock)
+              <li>
+                <div class='list-left'>
+                  <p>{{$stock->name}}</p>
+                </div>
+                <div class='list-center'>
+                  <p>残り{{$stock->piece}}{{$stock->unit}}</p>
+                  <p>期限 : {{$stock->limit}}</p>
+                </div>
+                <div class='list-right'>
+                  <button>
+                    <img src="/img/pencil_icon.svg" alt="edit-button">
+                  </button>
+                  <button>
+                    <img src="/img/delete_icon.svg" alt="delete-icon">
+                  </button>
+                </div>
+              </li>
+            @endforeach
           </ul>
         </div>
         <div class='add-button'>

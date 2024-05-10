@@ -15,6 +15,10 @@ header {
   height: 78px;
   display: flex;
   justify-content: space-between;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  /* z-index: 1; */ /* 必要に応じて修正すること */
 }
 
 .header-left a {
@@ -41,6 +45,8 @@ header {
 .list-view {
   display: flex;
   justify-content: center;
+  margin-top: 78px;
+  margin-bottom: 63px;
 }
 
 .list-view ul {
@@ -97,7 +103,7 @@ header {
   justify-content: center;
   position: fixed;
   bottom: 10%;
-  right: 25%;
+  right: 24%;
   width: 70px;
   height: 70px;
   line-height:70px;
