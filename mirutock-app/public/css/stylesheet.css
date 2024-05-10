@@ -121,22 +121,18 @@ header {
 footer {
   height: 63px;
   background-color: #1E95D4;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   width: 100%;
 }
 
 .link-icons {
-  /* line-height: 63px; */
   display: flex;
   justify-content: space-around;
 }
 
 .link-icons a {
-  /* width: 23px; */
-  /* height: 26px; */
   line-height: 63px;
   text-decoration: none;
   color: white;
-  border: none;
 }

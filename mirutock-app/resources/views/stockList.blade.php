@@ -3,22 +3,9 @@
 ?>
 <!DOCTYPE html>
 <html lang="ja">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/resetCss.css" type="text/css">
-    <link rel="stylesheet" href="/css/stylesheet.css" type="text/css">
-    <title>Mirutock</title>
-  </head>
+  @include('layouts.head')
   <body>
-    <header>
-        <div class='header-left'>
-          <a href="/">Mirutock</a>
-        </div>
-        <div class='header-right'>
-          <a href="#">logout</a>
-        </div>
-    </header>
+    @include('layouts.header')
     <div class='main-contents'>
         <div class='list-view'>
           <ul>
@@ -82,27 +69,8 @@
             <span>+</span>
           </a>
         </div>
-      </div>
-    <footer>
-      <div class='link-icons'>
-        <a href="#">
-          <img src="/img/shoplist.svg" alt="shoplist">
-          <!-- <span>買い物リスト</span> -->
-        </a>
-        <a href="#">
-          <img src="/img/fridge_all.svg" alt="fridge_all">
-          <!-- <p>全体</p> -->
-        </a>
-        <a href="#">
-          <img src="/img/fridge_cold.svg" alt="fridge_cold">
-          <!-- <span>冷蔵</span> -->
-        </a>
-        <a href="#">
-          <img src="/img/fridge_ice.svg" alt="fridge_ice">
-          <!-- <span>冷凍</span> -->
-        </a>
-      </div>
-    </footer>
+    </div>
+    @include('layouts.footer')
   <script src="{{ asset('js/app.js') }}" type="text/javascript"></script>
   </body>
 </html>
