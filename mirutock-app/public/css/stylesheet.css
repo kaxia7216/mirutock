@@ -1,0 +1,144 @@
+body{
+  margin: 0 auto;
+  background-color: #EDF2F7;
+}
+
+.main-contents {
+  margin: 0 300px;
+  min-height: 800px;
+  background-color: #B5E5E7;
+}
+
+header {
+  padding: 0 20px;
+  background-color: #1E95D4;
+  height: 78px;
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  /* z-index: 1; */ /* 必要に応じて修正すること */
+}
+
+.header-left a {
+  font-size: 32px;
+  text-decoration: none;
+  color: white;
+  line-height: 78px;
+  font-weight: bold;
+}
+
+.header-right a {
+  display: block;
+  font-size: 20px;
+  text-decoration: none;
+  color: white;
+  line-height: 78px;
+}
+
+.header-right a:hover {
+  text-decoration: none;
+  color: #FFCB67;
+}
+
+.list-view {
+  display: flex;
+  justify-content: center;
+  margin-top: 78px;
+  margin-bottom: 63px;
+}
+
+.list-view ul {
+  width: 70%;
+  padding: 0;
+  list-style: none;
+}
+
+.list-view li {
+  height: 70px;
+  background-color: white;
+  color: #7DD1DF;
+  margin: 20px auto;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.list-left {
+  font-size: 30px;
+  margin-left: 30px;
+}
+
+.list-center {
+  font-size: 20px;
+}
+
+.list-center .line-right {
+  line-height: 70px;
+}
+
+.list-view p {
+  margin: 0;
+}
+
+.list-left p {
+  line-height: 59px;
+}
+
+.list-right {
+  margin-right: 10px;
+}
+
+.list-right button {
+  background-color: white;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.add-button {
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  bottom: 10%;
+  right: 24%;
+  width: 70px;
+  height: 70px;
+  line-height:70px;
+  font-weight: bold;
+  font-size: 40px;
+  background-color: #FFCB67;
+  border-radius: 50%;
+  text-align: center;
+  cursor: pointer;
+}
+
+.add-button a {
+  text-decoration: none;
+  color: white;
+}
+
+.add-button span {
+  cursor: pointer;
+}
+
+footer {
+  height: 63px;
+  background-color: #1E95D4;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.link-icons {
+  display: flex;
+  justify-content: space-around;
+}
+
+.link-icons a {
+  line-height: 63px;
+  text-decoration: none;
+  color: white;
+}
