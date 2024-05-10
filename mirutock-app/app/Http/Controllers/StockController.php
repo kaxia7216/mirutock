@@ -14,4 +14,13 @@ class StockController extends Controller
 
         return view('stockList', compact('stocks'));
     }
+
+    //Stockテーブルから1件削除
+    public function deleteOneStock(int $stockId)
+    {
+        $stock = Stock::firstWhere('id', $stockId);
+        $stock->delete();
+
+        return redirect('/');
+    }
 }
