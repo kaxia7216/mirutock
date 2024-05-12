@@ -32,12 +32,23 @@
           </ul>
         </div>
         <div class='add-button'>
-          <a href="#">
-            <span>+</span>
-          </a>
+          <button class='modal-button'>
+            +
+          </button>
         </div>
     </div>
     @include('layouts.footer')
+    <div class="layer editor-modal">
+      <div class="modal">
+        <div class="modal__inner">
+          <div class="modal__contents">
+            <div class="modal__content">
+              コンテンツが入ります。コンテンツが入ります。コンテンツが入ります。コンテンツが入ります。コンテンツが入ります。コンテンツが入ります。
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="{{ asset('js/app.js') }}" type="text/javascript"></script>
   </body>
