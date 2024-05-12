@@ -35,6 +35,7 @@ header {
   text-decoration: none;
   color: white;
   line-height: 78px;
+  padding-right: 40px;
 }
 
 .header-right a:hover {
@@ -103,7 +104,7 @@ header {
   justify-content: center;
   position: fixed;
   bottom: 10%;
-  right: 24%;
+  right: 20%;
   width: 70px;
   height: 70px;
   line-height:70px;
@@ -115,13 +116,19 @@ header {
   cursor: pointer;
 }
 
-.add-button a {
+.modal-button {
   text-decoration: none;
+  background-color: #FFCB67;
+  border: none;
   color: white;
+  border-radius: 50%;
+  font-size: 50px;
+  cursor: pointer;
 }
 
-.add-button span {
-  cursor: pointer;
+.modal-button:focus {
+  outline: none;
+  border: none;
 }
 
 footer {
@@ -141,4 +148,54 @@ footer {
   line-height: 63px;
   text-decoration: none;
   color: white;
+}
+
+/* モーダルレイヤー */
+.layer {
+  background: rgba(0, 0, 0, .2);
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+  transform: translateY(100%);
+}
+
+/* モーダルコンテンツ */
+.modal {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%) translateY(100%);
+  width: 80%;
+  min-width: 440px;
+}
+
+.modal__inner {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  background: #1E95D4;
+  color: white;
+  box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 13px 13px 0 0;
+  display: block;
+  padding: 21px 8px 21px;
+  height: auto;
+}
+
+.modal__content {
+  padding-top: 15px;
+  padding-bottom: 23px;
+}
+
+.layer.active {
+  opacity: 1;
+  visibility: visible;
+  z-index: 2;
+  transform: translateY(0);
 }

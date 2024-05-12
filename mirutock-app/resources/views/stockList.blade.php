@@ -19,10 +19,11 @@
                   <p>期限 : {{$stock->limit}}</p>
                 </div>
                 <div class='list-right'>
+                  <form id="stock-delete" action="/delete/stock/{{$stock->id}}" method="POST"></form>
                   <button>
                     <img src="/img/pencil_icon.svg" alt="edit-button">
                   </button>
-                  <button>
+                  <button onclick="return confirm('{{$stock->name}}を削除しますか？')" form='stock-delete'>
                     <img src="/img/delete_icon.svg" alt="delete-icon">
                   </button>
                 </div>
@@ -31,12 +32,24 @@
           </ul>
         </div>
         <div class='add-button'>
-          <a href="#">
-            <span>+</span>
-          </a>
+          <button class='modal-button'>
+            +
+          </button>
         </div>
     </div>
     @include('layouts.footer')
+    <div class="layer editor-modal">
+      <div class="modal">
+        <div class="modal__inner">
+          <div class="modal__contents">
+            <div class="modal__content">
+              コンテンツが入ります。コンテンツが入ります。コンテンツが入ります。コンテンツが入ります。コンテンツが入ります。コンテンツが入ります。
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="{{ asset('js/app.js') }}" type="text/javascript"></script>
   </body>
 </html>
