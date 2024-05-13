@@ -15,16 +15,20 @@ class StockController extends Controller
         return view('stockList', compact('stocks'));
     }
 
+    //冷蔵のみのデータを取得
     public function showColdStocks()
     {
-        //
-        return view('stockList-cold');
+        $coldStocks = Stock::Where('type', 'cold')->get();
+
+        return view('stockList-cold', compact('coldStocks'));
     }
 
+    //冷凍のみのデータを取得
     public function showIceStocks()
     {
-        //
-        return view('stockList-ice');
+        $iceStocks = Stock::Where('type', 'ice')->get();
+
+        return view('stockList-ice', compact('iceStocks'));
     }
 
     //食材データの新規登録
