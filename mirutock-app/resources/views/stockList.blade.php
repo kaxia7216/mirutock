@@ -43,15 +43,15 @@
         <div class="modal__inner">
           <div class="modal__contents">
             <div class="modal__content">
-              <form action="" method='POST' class='add-form'>
+              <form action="/stock/new" method='POST' class='add-form'>
                 <fieldset>
                   <legend>食材の登録</legend>
                   <fieldset>
-                    <label for="">名前</label>
+                    <label>名前</label>
                     <input type="text" name='name'>
                   </fieldset>
                   <fieldset class='pieces'>
-                    <label for="">個数</label>
+                    <label>個数</label>
                     <button type='button' class='decrement-button' onclick='decrementPieces()'>
                       <img src="/img/left_arrow.svg" alt="left_arrow">
                     </button>
@@ -60,16 +60,20 @@
                       <img src="/img/right_arrow.svg" alt="right_arro">
                     </button>
                   </fieldset>
-                  <fieldset>
-                    <label for="">単位</label>
-                    <input type="text" name='piece'>
+                  <fieldset class='set-unit'>
+                    <label>単位</label>
+                    <input type="text" name='unit'>
                   </fieldset>
                   <fieldset>
-                    <label for="">保存先</label>
-                    <input type="text" name='type'>
+                    <label>保存先</label>
+                    <select class='keep-select' name='select-type'>
+                      <option value="" hidden>選択</option>
+                      <option value="cool">冷蔵</option>
+                      <option value="ice">冷凍</option>
+                    </select>
                   </fieldset>
                   <fieldset>
-                    <label for="">消費(賞味)期限</label>
+                    <label>消費(賞味)期限</label>
                     <div class='limit-form'>
                       <input type="text" name='limit-year'>
                       <span>年</span>

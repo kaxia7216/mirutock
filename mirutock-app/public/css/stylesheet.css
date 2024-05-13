@@ -257,6 +257,19 @@ fieldset {
   margin-left: 10px;
 }
 
+.keep-select {
+  margin-left: 10px;
+  width: 100px;
+  height: 35px;
+  background-color: #1E95D4;
+  color: white;
+  font-size: 22px;
+}
+
+.keep-select:focus {
+  outline: none;
+}
+
 .limit-form input {
   width: 100px;
 }
