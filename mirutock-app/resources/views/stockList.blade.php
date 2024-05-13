@@ -20,7 +20,7 @@
                 </div>
                 <div class='list-right'>
                   <form id="stock-delete" action="/delete/stock/{{$stock->id}}" method="POST"></form>
-                  <button>
+                  <button class='edit-button' onclick='editStockData({{$stock}})'>
                     <img src="/img/pencil_icon.svg" alt="edit-button">
                   </button>
                   <button onclick="return confirm('{{$stock->name}}を削除しますか？')" form='stock-delete'>
@@ -43,7 +43,35 @@
         <div class="modal__inner">
           <div class="modal__contents">
             <div class="modal__content">
-              コンテンツが入ります。コンテンツが入ります。コンテンツが入ります。コンテンツが入ります。コンテンツが入ります。コンテンツが入ります。
+              <form action="" method='POST' class='add-form'>
+                <fieldset>
+                  <legend>食材の登録</legend>
+                  <fieldset>
+                    <label for="">名前</label>
+                    <input type="text" name='name'>
+                  </fieldset>
+                  <fieldset>
+                    <label for="">個数</label>
+                    <input type="text" name='piece'>
+                  </fieldset>
+                  <fieldset>
+                    <label for="">保存先</label>
+                    <input type="text" name='type'>
+                  </fieldset>
+                  <fieldset>
+                    <label for="">消費(賞味)期限</label>
+                    <div class='limit-form'>
+                      <input type="text" name='limit-year'>
+                      <span>年</span>
+                      <input type="text" name='limit-month'>
+                      <span>月</span>
+                      <input type="text" name='limit-day'>
+                      <span>日まで</span>
+                    </div>
+                  </fieldset>
+                  <button type='submit'>追加</button>
+                </fieldset>
+              </form>
             </div>
           </div>
         </div>
