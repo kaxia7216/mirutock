@@ -27,6 +27,7 @@ header {
   color: white;
   line-height: 78px;
   font-weight: bold;
+  cursor: pointer;
 }
 
 .header-right a {
@@ -36,6 +37,7 @@ header {
   color: white;
   line-height: 78px;
   padding-right: 40px;
+  cursor: pointer;
 }
 
 .header-right a:hover {
@@ -148,6 +150,7 @@ footer {
   line-height: 63px;
   text-decoration: none;
   color: white;
+  cursor: pointer;
 }
 
 /* モーダルレイヤー */

@@ -4,31 +4,62 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Stock;
+use Carbon\Carbon;
 
 class StockController extends Controller
 {
     //Stockテーブルの全件取得(条件なし)
     public function showAllStocks()
     {
+        $diffDays = array();
+
         $stocks = Stock::all();
 
-        return view('stockList', compact('stocks'));
+        //今日の日付と消費期限の差分を取得
+        foreach ($stocks as $stock) {
+            $limitDate = Carbon::parse($stock->limit);
+            $today = Carbon::today();
+
+            array_push($diffDays, $today->diffInDays($limitDate, false));
+        }
+
+        return view('stockList', compact('stocks', 'diffDays'));
     }
 
     //冷蔵のみのデータを取得
     public function showColdStocks()
     {
+        $diffDays = array();
+
         $coldStocks = Stock::Where('type', 'cold')->get();
 
-        return view('stockList-cold', compact('coldStocks'));
+        //今日の日付と消費期限の差分を取得
+        foreach ($coldStocks as $stock) {
+            $limitDate = Carbon::parse($stock->limit);
+            $today = Carbon::today();
+
+            array_push($diffDays, $today->diffInDays($limitDate, false));
+        }
+
+        return view('stockList-cold', compact('coldStocks', 'diffDays'));
     }
 
     //冷凍のみのデータを取得
     public function showIceStocks()
     {
+        $diffDays = array();
+
         $iceStocks = Stock::Where('type', 'ice')->get();
 
-        return view('stockList-ice', compact('iceStocks'));
+        //今日の日付と消費期限の差分を取得
+        foreach ($iceStocks as $stock) {
+            $limitDate = Carbon::parse($stock->limit);
+            $today = Carbon::today();
+
+            array_push($diffDays, $today->diffInDays($limitDate, false));
+        }
+
+        return view('stockList-ice', compact('iceStocks', 'diffDays'));
     }
 
     //食材データの新規登録
