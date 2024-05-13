@@ -199,3 +199,93 @@ footer {
   z-index: 2;
   transform: translateY(0);
 }
+
+fieldset {
+  border: none;
+  position: relative;
+}
+
+.add-form legend {
+  font-weight: bold;
+  font-size: 28px;
+}
+
+.add-form label {
+  font-size: 22px;
+}
+
+.add-form span {
+  font-size: 22px;
+}
+
+.add-form input {
+  color: white;
+  height: 30px;
+  font-size: 22px;
+  margin-left: 10px;
+  background-color: #1E95D4;
+  border: none;
+  border-bottom: 1px solid white;
+  outline: none;
+}
+
+.add-form input:focus {
+  outline: none;
+  border: none;
+  border-bottom: 1px solid white;
+}
+
+.pieces input {
+  width: 100px;
+  margin: 0;
+  text-align: center;
+}
+
+.pieces button {
+  background-color: #1E95D4;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+.pieces img {
+  width: 20px;
+  height: 20px;
+}
+
+.decrement-button {
+  margin-left: 10px;
+}
+
+.keep-select {
+  margin-left: 10px;
+  width: 100px;
+  height: 35px;
+  background-color: #1E95D4;
+  color: white;
+  font-size: 22px;
+}
+
+.keep-select:focus {
+  outline: none;
+}
+
+.limit-form input {
+  width: 100px;
+}
+
+.add-submit {
+  background-color: #FFCB67;
+  color: white;
+  width: 100px;
+  height: 50px;
+  font-size: 22px;
+  font-weight: bold;
+  border-radius: 20px;
+  position: absolute;
+  right: 10px;
+  bottom: 0;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
