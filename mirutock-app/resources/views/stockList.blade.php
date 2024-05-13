@@ -37,7 +37,7 @@
           </button>
         </div>
     </div>
-    @include('layouts.footer')
+    @include('layouts.footer-stock-all')
     @include('layouts.modal')
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="{{ asset('js/app.js') }}" type="text/javascript"></script>

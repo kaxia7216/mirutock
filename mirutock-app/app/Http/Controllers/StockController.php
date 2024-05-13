@@ -15,6 +15,18 @@ class StockController extends Controller
         return view('stockList', compact('stocks'));
     }
 
+    public function showColdStocks()
+    {
+        //
+        return view('stockList-cold');
+    }
+
+    public function showIceStocks()
+    {
+        //
+        return view('stockList-ice');
+    }
+
     //食材データの新規登録
     public function insertStock(Request $request)
     {
