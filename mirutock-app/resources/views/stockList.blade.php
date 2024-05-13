@@ -45,6 +45,7 @@
             <div class="modal__content">
               <form action="/stock/new" method='POST' class='add-form'>
                 <fieldset>
+                  @csrf
                   <legend>食材の登録</legend>
                   <fieldset>
                     <label>名前</label>

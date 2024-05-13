@@ -16,3 +16,4 @@ use App\Http\Controllers\StockController;
 
 Route::get('/', [StockController::class, 'showAllStocks']);
 Route::get('/delete/stock/{stock_id}', [StockController::class, 'deleteOneStock']);
+Route::post('/stock/new', [StockController::class, 'insertStock']);
