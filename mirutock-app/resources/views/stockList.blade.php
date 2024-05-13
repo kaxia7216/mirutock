@@ -50,8 +50,18 @@
                     <label for="">名前</label>
                     <input type="text" name='name'>
                   </fieldset>
-                  <fieldset>
+                  <fieldset class='pieces'>
                     <label for="">個数</label>
+                    <button type='button' class='decrement-button' onclick='decrementPieces()'>
+                      <img src="/img/left_arrow.svg" alt="left_arrow">
+                    </button>
+                    <input type="text" name='piece' value='0' id='piece-number'>
+                    <button type='button' class='increment-button' onclick='incrementPieces()'>
+                      <img src="/img/right_arrow.svg" alt="right_arro">
+                    </button>
+                  </fieldset>
+                  <fieldset>
+                    <label for="">単位</label>
                     <input type="text" name='piece'>
                   </fieldset>
                   <fieldset>
@@ -69,7 +79,7 @@
                       <span>日まで</span>
                     </div>
                   </fieldset>
-                  <button type='submit'>追加</button>
+                  <button class='add-submit' type='submit'>追加</button>
                 </fieldset>
               </form>
             </div>

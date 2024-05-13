@@ -235,11 +235,33 @@ fieldset {
   border-bottom: 1px solid white;
 }
 
+.pieces input {
+  width: 100px;
+  margin: 0;
+  text-align: center;
+}
+
+.pieces button {
+  background-color: #1E95D4;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+.pieces img {
+  width: 20px;
+  height: 20px;
+}
+
+.decrement-button {
+  margin-left: 10px;
+}
+
 .limit-form input {
   width: 100px;
 }
 
-.add-form button {
+.add-submit {
   background-color: #FFCB67;
   color: white;
   width: 100px;
