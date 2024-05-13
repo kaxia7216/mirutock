@@ -1,3 +1,4 @@
+const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 const modalButton = document.querySelector('.modal-button');
 const editModalButton = document.querySelector('.edit-button');
 const layer = document.querySelector('.layer');
@@ -9,6 +10,53 @@ modalButton.addEventListener('click', function() {
   modal.style.transform = 'translateX(-50%) translateY(0)';
 
   //フォームの内容を追加する処理
+  const newCreateModal = document.getElementById('modal__content');
+  newCreateModal.innerHTML = `
+    <form action="/stock/new" method='POST' class='add-form'>
+      <fieldset>
+        <input type="hidden" name="_token" value="${csrfToken}">
+        <legend>食材の登録</legend>
+        <fieldset>
+          <label>名前</label>
+          <input type="text" name='name'>
+        </fieldset>
+        <fieldset class='pieces'>
+          <label>個数</label>
+          <button type='button' class='decrement-button' onclick='decrementPieces()'>
+            <img src="/img/left_arrow.svg" alt="left_arrow">
+          </button>
+          <input type="text" name='piece' value='0' id='piece-number'>
+          <button type='button' class='increment-button' onclick='incrementPieces()'>
+            <img src="/img/right_arrow.svg" alt="right_arro">
+          </button>
+        </fieldset>
+        <fieldset class='set-unit'>
+          <label>単位</label>
+          <input type="text" name='unit'>
+        </fieldset>
+        <fieldset>
+          <label>保存先</label>
+          <select class='keep-select' name='select-type'>
+            <option value="" hidden>選択</option>
+            <option value="cold">冷蔵</option>
+            <option value="ice">冷凍</option>
+          </select>
+        </fieldset>
+        <fieldset>
+          <label>消費(賞味)期限</label>
+          <div class='limit-form'>
+            <input type="text" name='limit-year'>
+            <span>年</span>
+            <input type="text" name='limit-month'>
+            <span>月</span>
+            <input type="text" name='limit-day'>
+            <span>日まで</span>
+          </div>
+        </fieldset>
+        <button class='add-submit' type='submit'>追加</button>
+      </fieldset>
+    </form>
+  `;
 });
 
 //モーダルを閉じる
@@ -25,6 +73,74 @@ function editStockData(stock){
   modal.style.transform = 'translateX(-50%) translateY(0)';
 
   //フォームの内容を追加する処理
+  const editModal = document.getElementById('modal__content');
+  const limitDate = stock.limit.split('-');
+  let htmlString = `
+  <form action="/stock/edit/${stock.id}" method='POST' class='add-form'>
+    <fieldset>
+      <input type="hidden" name="_token" value="${csrfToken}">
+      <legend>登録内容の変更</legend>
+      <fieldset>
+        <label>名前</label>
+        <input type="text" name='name' value='${stock.name}'>
+      </fieldset>
+      <fieldset class='pieces'>
+        <label>個数</label>
+        <button type='button' class='decrement-button' onclick='decrementPieces()'>
+          <img src="/img/left_arrow.svg" alt="left_arrow">
+        </button>
+        <input type="text" name='piece' value='${stock.piece}' id='piece-number'>
+        <button type='button' class='increment-button' onclick='incrementPieces()'>
+          <img src="/img/right_arrow.svg" alt="right_arro">
+        </button>
+      </fieldset>
+      <fieldset class='set-unit'>
+        <label>単位</label>
+        <input type="text" name='unit' value='${stock.unit}'>
+      </fieldset>
+  `;
+
+  if(stock.type === 'cold'){
+    htmlString += `
+    <fieldset>
+      <label>保存先</label>
+      <select class='keep-select' name='select-type'>
+        <option value="" hidden>選択</option>
+        <option value="cold" selected>冷蔵</option>
+        <option value="ice">冷凍</option>
+      </select>
+    </fieldset>
+    `;
+  } else {
+    htmlString += `
+    <fieldset>
+      <label>保存先</label>
+      <select class='keep-select' name='select-type'>
+        <option value="" hidden>選択</option>
+        <option value="cold">冷蔵</option>
+        <option value="ice" selected>冷凍</option>
+      </select>
+    </fieldset>
+    `;
+  }
+
+  htmlString += `
+            <label>消費(賞味)期限</label>
+            <div class='limit-form'>
+              <input type="text" name='limit-year' value='${limitDate[0]}'>
+              <span>年</span>
+              <input type="text" name='limit-month' value='${limitDate[1]}'>
+              <span>月</span>
+              <input type="text" name='limit-day' value='${limitDate[2]}'>
+              <span>日まで</span>
+            </div>
+          </fieldset>
+        <button class='add-submit' type='submit'>変更</button>
+      </fieldset>
+    </form>
+  `;
+
+  editModal.innerHTML = htmlString;
 }
 
 //個数入力の矢印ボタン
