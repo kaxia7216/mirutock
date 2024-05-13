@@ -9,7 +9,7 @@
     <div class='main-contents'>
         <div class='list-view'>
           <ul>
-            @foreach($stocks as $stock)
+            @foreach($coldStocks as $stock)
               <li>
                 <div class='list-left'>
                   <p>{{$stock->name}}</p>
@@ -37,7 +37,7 @@
           </button>
         </div>
     </div>
-    @include('layouts.footer-stock-all')
+    @include('layouts.footer-stock-cold')
     @include('layouts.modal')
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="{{ asset('js/app.js') }}" type="text/javascript"></script>
