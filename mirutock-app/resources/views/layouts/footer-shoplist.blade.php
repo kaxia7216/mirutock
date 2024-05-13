@@ -4,10 +4,10 @@
 <footer>
       <div class='link-icons'>
         <a href="/shoplist">
-          <img src="/img/shoplist.svg" alt="shoplist">
+          <img src="/img/shoplist_now.svg" alt="shoplist">
         </a>
         <a href="/">
-          <img src="/img/fridge_all_now.svg" alt="fridge_all">
+          <img src="/img/fridge_all.svg" alt="fridge_all">
         </a>
         <a href="/cold">
           <img src="/img/fridge_cold.svg" alt="fridge_cold">
