@@ -31,6 +31,21 @@ class StockController extends Controller
         return redirect('/');
     }
 
+    //IDを指定したStockデータ1件を更新
+    public function editStockData(int $stockId, Request $request)
+    {
+        $editlimitDate = $request['limit-year'] . "-" . $request['limit-month'] . "-" . $request['limit-day'];
+
+        $editStock = Stock::Where('id', $stockId);
+        $editStock->update(['name' => $request['name']]);
+        $editStock->update(['type' => $request['select-type']]);
+        $editStock->update(['piece' => $request['piece']]);
+        $editStock->update(['unit' => $request['unit']]);
+        $editStock->update(['limit' => $editlimitDate]);
+
+        return redirect('/');
+    }
+
     //Stockテーブルから1件削除
     public function deleteOneStock(int $stockId)
     {

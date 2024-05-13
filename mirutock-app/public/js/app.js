@@ -76,10 +76,10 @@ function editStockData(stock){
   const editModal = document.getElementById('modal__content');
   const limitDate = stock.limit.split('-');
   let htmlString = `
-  <form action="/stock/edit" method='POST' class='add-form'>
+  <form action="/stock/edit/${stock.id}" method='POST' class='add-form'>
     <fieldset>
       <input type="hidden" name="_token" value="${csrfToken}">
-      <legend>食材の登録</legend>
+      <legend>登録内容の変更</legend>
       <fieldset>
         <label>名前</label>
         <input type="text" name='name' value='${stock.name}'>
@@ -135,7 +135,7 @@ function editStockData(stock){
               <span>日まで</span>
             </div>
           </fieldset>
-        <button class='add-submit' type='submit'>追加</button>
+        <button class='add-submit' type='submit'>変更</button>
       </fieldset>
     </form>
   `;
