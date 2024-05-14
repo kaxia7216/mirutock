@@ -9,17 +9,30 @@
     <div class='main-contents'>
         <div class='list-view'>
           <ul>
-            @foreach($stocks as $stock)
+            @foreach($stocks as $keys => $stock)
               <li>
                 <div class='list-left'>
                   <p>{{$stock->name}}</p>
                 </div>
                 <div class='list-center'>
-                  <p>残り{{$stock->piece}}{{$stock->unit}}</p>
-                  <p>期限 : {{$stock->limit}}</p>
+                  @if ($stock->piece < 1)
+                    <p>在庫なし</p>
+                  @else
+                    <p>残り{{$stock->piece}}{{$stock->unit}}</p>
+                  @endif
+                  @if ($diffDays[$keys] > 0)
+                    <p>あと{{$diffDays[$keys]}}日</p>
+                  @elseif ($diffDays[$keys] < 0)
+                    <p>期限切れ</p>
+                  @else
+                    <p>本日まで</p>
+                  @endif
                 </div>
                 <div class='list-right'>
-                  <form id="stock-delete" action="/delete/stock/{{$stock->id}}" method="POST"></form>
+                  <form id="stock-delete" action="/delete/stock/{{$stock->id}}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                  </form>
                   <button class='edit-button' onclick='editStockData({{$stock}})'>
                     <img src="/img/pencil_icon.svg" alt="edit-button">
                   </button>

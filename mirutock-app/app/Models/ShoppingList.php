@@ -9,6 +9,8 @@ class ShoppingList extends Model
 {
     use HasFactory;
 
+    protected $table = 'shoppinglists';
+
     public function stocks()
     {
         return $this -> belongTo(Stock::class);

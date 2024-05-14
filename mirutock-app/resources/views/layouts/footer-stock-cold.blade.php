@@ -3,7 +3,7 @@
 ?>
 <footer>
       <div class='link-icons'>
-        <a href="#">
+        <a href="/shoplist">
           <img src="/img/shoplist.svg" alt="shoplist">
         </a>
         <a href="/">
