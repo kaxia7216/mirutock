@@ -292,3 +292,39 @@ fieldset {
   border: none;
   cursor: pointer;
 }
+
+.reload-button {
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  bottom: 10%;
+  right: 20%;
+  width: 70px;
+  height: 70px;
+  line-height:70px;
+  font-weight: bold;
+  font-size: 40px;
+  background-color: #FFCB67;
+  border-radius: 50%;
+  text-align: center;
+  cursor: pointer;
+}
+
+.reload-button-img {
+  text-decoration: none;
+  background-color: #FFCB67;
+  border: none;
+  color: white;
+  border-radius: 50%;
+  font-size: 50px;
+  cursor: pointer;
+}
+
+.reload-button-img img {
+  width: 32px;
+}
+
+.reload-button-img:focus {
+  outline: none;
+  border: none;
+}
