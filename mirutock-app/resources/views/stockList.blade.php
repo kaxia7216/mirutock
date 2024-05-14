@@ -25,7 +25,10 @@
                   @endif
                 </div>
                 <div class='list-right'>
-                  <form id="stock-delete" action="/delete/stock/{{$stock->id}}" method="POST"></form>
+                  <form id="stock-delete" action="/delete/stock/{{$stock->id}}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                  </form>
                   <button class='edit-button' onclick='editStockData({{$stock}})'>
                     <img src="/img/pencil_icon.svg" alt="edit-button">
                   </button>
