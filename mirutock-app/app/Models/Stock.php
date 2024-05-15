@@ -9,6 +9,8 @@ class Stock extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['name','type','unit','piece', 'limit'];
+
     public function shoppinglists()
     {
         return $this -> hasMany(ShoppingList::class);

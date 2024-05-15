@@ -78,7 +78,7 @@ class StockController extends Controller
         return redirect('/');
     }
 
-    //IDを指定したStockデータ1件を更新
+    //IDを指定したStockデータ1件の全カラムの内容を更新
     public function editStockData(int $stockId, Request $request)
     {
         $editlimitDate = $request['limit-year'] . "-" . $request['limit-month'] . "-" . $request['limit-day'];
@@ -91,6 +91,15 @@ class StockController extends Controller
         $editStock->update(['limit' => $editlimitDate]);
 
         return redirect('/');
+    }
+
+    //対象の個数と期限のみを更新
+    public function renewStockPieceAndLimit(int $stock_id, Request $request)
+    {
+        $renewlimitDate = $request['limit-year'] . "-" . $request['limit-month'] . "-" . $request['limit-day'];
+        $restoreStock = Stock::firstWhere('id', $stock_id);
+        $restoreStock->update(['piece' => $request['piece']]);
+        $restoreStock->update(['limit' => $renewlimitDate]);
     }
 
     //Stockテーブルから1件削除

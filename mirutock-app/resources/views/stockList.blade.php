@@ -36,7 +36,7 @@
                   <button class='edit-button' onclick='editStockData({{$stock}})'>
                     <img src="/img/pencil_icon.svg" alt="edit-button">
                   </button>
-                  <button onclick="return confirm('{{$stock->name}}を削除しますか？')" form='stock-delete'>
+                  <button onclick="return confirm('{{$stock->name}}を在庫リストから削除しますか？')" form='stock-delete'>
                     <img src="/img/delete_icon.svg" alt="delete-icon">
                   </button>
                 </div>

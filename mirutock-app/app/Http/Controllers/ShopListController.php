@@ -6,26 +6,26 @@ use Illuminate\Http\Request;
 use App\Models\ShoppingList;
 use App\Models\Stock;
 use Carbon\Carbon;
+use App\Http\Controllers\StockController;
 
 class ShopListController extends Controller
 {
     public function showShopList()
     {
-        $shopLists = ShoppingList::join('stocks', 'shoppinglists.stock_id', '=', 'stocks.id')->get();
-        // dd($shopLists);
+        $shopLists = Stock::join('shoppinglists', 'stocks.id', '=', 'shoppinglists.stock_id')->get();
         return view('shopList', compact('shopLists'));
     }
 
     public function rebuildShopLists()
     {
-        //reloadボタンを押したとき
+        //reloadボタンを押したときのみ
         $this->createShopLists();
-        return view('shopList');
+        return redirect('/shoplist');
     }
 
+    //ShopListデータ作成処理
     public function createShopLists()
     {
-        //ShopListデータ作成処理
         $shopList = ShoppingList::all();
 
         if (!$shopList->isEmpty()) {
@@ -48,5 +48,27 @@ class ShopListController extends Controller
                 $newShopList->save();
             }
         }
+    }
+
+    //Stockテーブルへ食材データの更新、および買い物リストからの削除
+    public function restoreToStock(int $shopList_id, Request $request)
+    {
+        $renewShopList = ShoppingList::firstWhere('id', $shopList_id);
+
+        $stockController = new StockController();
+        $stockController->renewStockPieceAndLimit($renewShopList->stock_id, $request);
+
+        $renewShopList->delete();
+
+        return redirect('/shoplist');
+    }
+
+    //買い物リストから１件レコードを削除
+    public function deleteOneShopList(int $shopList_id)
+    {
+        $deleteShopList = ShoppingList::firstWhere('id', $shopList_id);
+        $deleteShopList->delete();
+
+        return redirect('/shoplist');
     }
 }
