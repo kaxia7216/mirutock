@@ -27,4 +27,5 @@ Route::controller(StockController::class)->group(function () {
 Route::controller(ShopListController::class)->group(function () {
     Route::get('/shoplist', 'showShopList');
     Route::post('/reload', 'rebuildShopLists');
+    Route::delete('/delete/shopList/{shopList_id}', 'deleteOneShopList');
 });

@@ -11,7 +11,7 @@ class ShopListController extends Controller
 {
     public function showShopList()
     {
-        $shopLists = ShoppingList::join('stocks', 'shoppinglists.stock_id', '=', 'stocks.id')->get();
+        $shopLists = Stock::join('shoppinglists', 'stocks.id', '=', 'shoppinglists.stock_id')->get();
         return view('shopList', compact('shopLists'));
     }
 
@@ -47,5 +47,14 @@ class ShopListController extends Controller
                 $newShopList->save();
             }
         }
+    }
+
+    //買い物リストから１件レコードを削除
+    public function deleteOneShopList(int $shopList_id)
+    {
+        $deleteShopList = ShoppingList::firstWhere('id', $shopList_id);
+        $deleteShopList->delete();
+
+        return redirect('/shoplist');
     }
 }

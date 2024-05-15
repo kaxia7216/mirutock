@@ -22,7 +22,7 @@
                   <button class='edit-button' onclick='editShopListData({{$shopList}})'>
                     <img src="/img/pencil_icon.svg" alt="edit-button">
                   </button>
-                  <button onclick="return confirm('{{$shopList->name}}を削除しますか？')" form='shop-delete'>
+                  <button onclick="return confirm('{{$shopList->name}}を買い物リストから削除しますか？')" form='shop-delete'>
                     <img src="/img/delete_icon.svg" alt="delete-icon">
                   </button>
                 </div>
