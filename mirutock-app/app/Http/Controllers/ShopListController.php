@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\ShoppingList;
 use App\Models\Stock;
 use Carbon\Carbon;
+use App\Http\Controllers\StockController;
 
 class ShopListController extends Controller
 {
@@ -47,6 +48,19 @@ class ShopListController extends Controller
                 $newShopList->save();
             }
         }
+    }
+
+    //Stockテーブルへ食材データの更新、および買い物リストからの削除
+    public function restoreToStock(int $shopList_id, Request $request)
+    {
+        $renewShopList = ShoppingList::firstWhere('id', $shopList_id);
+
+        $stockController = new StockController();
+        $stockController->renewStockPieceAndLimit($renewShopList->stock_id, $request);
+
+        $renewShopList->delete();
+
+        return redirect('/shoplist');
     }
 
     //買い物リストから１件レコードを削除

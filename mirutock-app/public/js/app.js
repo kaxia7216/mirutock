@@ -145,6 +145,54 @@ function editStockData(stock){
   editModal.innerHTML = htmlString;
 }
 
+function renewShopListData(shopList){
+  layer.classList.add('active');
+  modal.style.transform = 'translateX(-50%) translateY(0)';
+
+  const editModal = document.getElementById('modal__content');
+  const limitDate = shopList.limit.split('-');
+  let htmlString = `
+  <form action="/shoplist/renew/${shopList.id}" method='POST' class='add-form'>
+    <fieldset>
+      <input type="hidden" name="_token" value="${csrfToken}">
+      <legend>食材の再追加</legend>
+  `;
+
+  if(shopList.type === 'cold'){
+    htmlString += `<legend>${shopList.name} : 冷蔵</legend>`;
+  } else {
+    htmlString += `<legend>${shopList.name} : 冷凍</legend>`;
+  }
+
+  htmlString += `
+            <fieldset class='pieces'>
+              <label>個数</label>
+              <button type='button' class='decrement-button' onclick='decrementPieces()'>
+                <img src="/img/left_arrow.svg" alt="left_arrow">
+              </button>
+              <input type="text" name='piece' value='${shopList.piece}' id='piece-number'>
+              <button type='button' class='increment-button' onclick='incrementPieces()'>
+                <img src="/img/right_arrow.svg" alt="right_arro">
+              </button>
+            </fieldset>
+            <label>消費(賞味)期限</label>
+            <div class='limit-form'>
+              <input type="text" name='limit-year' value='${limitDate[0]}'>
+              <span>年</span>
+              <input type="text" name='limit-month' value='${limitDate[1]}'>
+              <span>月</span>
+              <input type="text" name='limit-day' value='${limitDate[2]}'>
+              <span>日まで</span>
+            </div>
+          </fieldset>
+        <button class='add-submit' type='submit'>変更</button>
+      </fieldset>
+    </form>
+  `;
+
+  editModal.innerHTML = htmlString;
+}
+
 //個数入力の矢印ボタン
 function incrementPieces() {
   const piecesInput = document.getElementById('piece-number');

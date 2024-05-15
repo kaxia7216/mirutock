@@ -19,7 +19,7 @@
                     @csrf
                     @method('DELETE')
                   </form>
-                  <button class='edit-button' onclick='editShopListData({{$shopList}})'>
+                  <button class='edit-button' onclick='renewShopListData({{$shopList}})'>
                     <img src="/img/pencil_icon.svg" alt="edit-button">
                   </button>
                   <button onclick="return confirm('{{$shopList->name}}を買い物リストから削除しますか？')" form='shop-delete'>
