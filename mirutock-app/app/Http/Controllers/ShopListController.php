@@ -12,20 +12,19 @@ class ShopListController extends Controller
     public function showShopList()
     {
         $shopLists = ShoppingList::join('stocks', 'shoppinglists.stock_id', '=', 'stocks.id')->get();
-        // dd($shopLists);
         return view('shopList', compact('shopLists'));
     }
 
     public function rebuildShopLists()
     {
-        //reloadボタンを押したとき
+        //reloadボタンを押したときのみ
         $this->createShopLists();
-        return view('shopList');
+        return redirect('/shoplist');
     }
 
+    //ShopListデータ作成処理
     public function createShopLists()
     {
-        //ShopListデータ作成処理
         $shopList = ShoppingList::all();
 
         if (!$shopList->isEmpty()) {

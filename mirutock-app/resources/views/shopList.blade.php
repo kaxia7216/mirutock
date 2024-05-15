@@ -15,14 +15,14 @@
                   <p>{{$shopList->name}}</p>
                 </div>
                 <div class='list-right'>
-                  <form id="stock-delete" action="/delete/stock/{{$shopList->id}}" method="POST">
+                  <form id="shop-delete" action="/delete/shopList/{{$shopList->id}}" method="POST">
                     @csrf
                     @method('DELETE')
                   </form>
-                  <button class='edit-button' onclick='editStockData({{$shopList}})'>
+                  <button class='edit-button' onclick='editShopListData({{$shopList}})'>
                     <img src="/img/pencil_icon.svg" alt="edit-button">
                   </button>
-                  <button onclick="return confirm('{{$shopList->name}}を削除しますか？')" form='stock-delete'>
+                  <button onclick="return confirm('{{$shopList->name}}を削除しますか？')" form='shop-delete'>
                     <img src="/img/delete_icon.svg" alt="delete-icon">
                   </button>
                 </div>
