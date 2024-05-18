@@ -175,7 +175,7 @@ footer {
   left: 50%;
   transform: translateX(-50%) translateY(100%);
   width: 80%;
-  min-width: 440px;
+  min-width: 360px;
 }
 
 .modal__inner {
@@ -189,6 +189,7 @@ footer {
   display: block;
   padding: 21px 8px 21px;
   height: auto;
+  position: relative;
 }
 
 .modal__content {
@@ -205,7 +206,7 @@ footer {
 
 fieldset {
   border: none;
-  position: relative;
+  /* position: relative; */
 }
 
 .add-form legend {
@@ -286,8 +287,8 @@ fieldset {
   font-weight: bold;
   border-radius: 30px;
   position: absolute;
-  right: 10px;
-  bottom: 0;
+  right: 20px;
+  bottom: 10px;
   outline: none;
   border: none;
   cursor: pointer;
@@ -327,4 +328,113 @@ fieldset {
 .reload-button-img:focus {
   outline: none;
   border: none;
+}
+
+/* 以下、レスポンシブ対応 */
+@media screen and (max-width:1200px) {
+  .main-contents{
+    margin:0;
+  }
+
+  .add-button {
+    right: 5%;
+  }
+
+  .reload-button {
+    right: 5%;
+  }
+}
+
+@media screen and (max-width:500px) {
+  /* リストの調整 */
+  .list-view {
+    padding-bottom: 80px;
+  }
+
+  .list-view ul {
+    width: 85%;
+  }
+
+  .list-view li {
+    height: 59px;
+  }
+
+  .list-left {
+    font-size: 18px;
+    margin-left: 10px;
+  }
+
+  .list-center {
+    font-size: 14px;
+  }
+
+  .list-center .line-right {
+    line-height: 59px;
+  }
+
+  .list-right button {
+    padding: 0;
+  }
+
+  /* モーダル */
+  .modal {
+    width: 100%;
+  }
+
+  .modal__inner {
+    padding: 21px 0px;
+  }
+
+  fieldset {
+    padding: 5.6px 0px 5.6px 3px;
+  }
+  /* .add-form fieldset{
+    margin-bottom: 35px;
+  } */
+
+  .add-form legend {
+    font-size: 20px;
+  }
+
+  .add-form label {
+    font-size: 18px;
+  }
+
+  .add-form span {
+    font-size: 18px;
+  }
+
+  .add-form input {
+    width: 165px;
+    font-size: 18px;
+  }
+
+  .pieces input {
+    width: 69px;
+  }
+
+  .pieces img {
+    width: 15px;
+    height: 18px;
+  }
+
+  .limit-form input {
+    width: 40px;
+  }
+
+  .set-unit input {
+    width: 80px;
+  }
+
+  .keep-select {
+    font-size: 18px;
+  }
+
+  .add-submit {
+    width: 84px;
+    height: 35px;
+    font-size: 18px;
+    font-weight: normal;
+    right: 10px;
+  }
 }
