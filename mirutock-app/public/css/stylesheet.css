@@ -141,6 +141,11 @@ footer {
   width: 100%;
 }
 
+.login-footer {
+  text-align: center;
+  color: white;
+}
+
 .link-icons {
   display: flex;
   justify-content: space-around;
@@ -330,6 +335,46 @@ fieldset {
   border: none;
 }
 
+.login-link {
+  display: grid;
+  place-items: center;
+  height: 100vh;
+  background-color: #B5E5E7;
+}
+
+.links-container {
+  text-align: center;
+}
+
+.links-container a {
+  color:white;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.google-link {
+  font-size: 28px;
+  display: inline-flex;
+  align-items: center;
+  padding: 15px 57px;
+  background-color: #FFCB67;
+  text-decoration: none;
+  border-radius: 20px;
+}
+
+.google-link img {
+  margin-right: 15px;
+}
+
+.return-link {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.return-link a:hover {
+  text-decoration: underline;
+}
+
 /* 以下、レスポンシブ対応 */
 @media screen and (max-width:1200px) {
   .main-contents{
@@ -436,5 +481,9 @@ fieldset {
     font-size: 18px;
     font-weight: normal;
     right: 10px;
+  }
+
+  .login-footer {
+    font-size: 12px;
   }
 }
