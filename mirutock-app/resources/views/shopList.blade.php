@@ -9,7 +9,7 @@
     <div class='main-contents'>
         <div class='list-view'>
           <ul>
-            @foreach($shopLists as $keys => $shopList)
+            @foreach($shopLists as $shopList)
               <li>
                 <div class='list-left'>
                   <p>{{$shopList->name}}</p>

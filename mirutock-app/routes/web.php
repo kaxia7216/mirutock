@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StockController;
 use App\Http\Controllers\ShopListController;
-use App\Models\ShoppingList;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,6 +15,10 @@ use App\Models\ShoppingList;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+Route::get('/login', function () {
+    return view('login');
+});
 
 Route::controller(StockController::class)->group(function () {
     Route::get('/', 'showAllStocks');
