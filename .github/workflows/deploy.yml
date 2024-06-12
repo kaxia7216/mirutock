@@ -20,7 +20,23 @@ jobs:
       id-token: write
       contents: read
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # .env.mirutockの更新
+      - name: Renew envMirutockFile
+        id: renew-env
+        run: |
+          sed -i 's|\[DB_USERNAME\]|${{ env.AWS_DB_USERNAME }}|g' ./mirutock-app/.env.mirutock
+          sed -i 's|\[DB_HOST\]|${{ env.AWS_DB_HOST }}|g' ./mirutock-app/.env.mirutock
+          sed -i 's|\[DB_DATABASE\]|${{ env.AWS_DB_DATABASE }}|g' ./mirutock-app/.env.mirutock
+          sed -i 's|\[DB_PASSWORD\]|${{ env.AWS_DB_PASSWORD }}|g' ./mirutock-app/.env.mirutock
+          echo "::set-output name=content::$(cat .env.mirutock)"
+
+      - name: Update .env file
+        run: |
+          echo "${{ steps.renew-env.outputs.content }}" > .env
+          cat .env
 
       # AWS 認証
       - uses: aws-actions/configure-aws-credentials@v4
@@ -45,7 +61,7 @@ jobs:
           # 任意のイメージタグ
           IMAGE_TAG: latest
         run: |
-          docker build ./mirutock-app --tag ${{ env.REGISTRY }}/${{ env.REPOSITORY }}:${{ env.IMAGE_TAG }}
+          docker build -t ./mirutock-app --tag ${{ env.REGISTRY }}/${{ env.REPOSITORY }}:${{ env.IMAGE_TAG }}
           docker push ${{ env.REGISTRY }}/${{ env.REPOSITORY }}:${{ env.IMAGE_TAG }}
           # outputs で参照するために `image_id` という名前で出力
           echo "image_id=${{ env.REGISTRY }}/${{ env.REPOSITORY }}:${{ env.IMAGE_TAG }}" >> $GITHUB_OUTPUT
