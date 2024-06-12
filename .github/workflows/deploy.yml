@@ -31,12 +31,12 @@ jobs:
           sed -i 's|\[DB_HOST\]|${{ env.AWS_DB_HOST }}|g' ./mirutock-app/.env.mirutock
           sed -i 's|\[DB_DATABASE\]|${{ env.AWS_DB_DATABASE }}|g' ./mirutock-app/.env.mirutock
           sed -i 's|\[DB_PASSWORD\]|${{ env.AWS_DB_PASSWORD }}|g' ./mirutock-app/.env.mirutock
-          echo "::set-output name=content::$(cat .env.mirutock)"
+          echo "::set-output name=content::$(cat ./mirutock-app/.env.mirutock)"
 
       - name: Update .env file
         run: |
-          echo "${{ steps.renew-env.outputs.content }}" > .env
-          cat .env
+          echo "${{ steps.renew-env.outputs.content }}" > ./mirutock-app/.env
+          cat ./mirutock-app/.env
 
       # AWS 認証
       - uses: aws-actions/configure-aws-credentials@v4
