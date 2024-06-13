@@ -20,6 +20,10 @@ Route::get('/login', function () {
     return view('login');
 });
 
+Route::get('/top', function () {
+    return view('top');
+});
+
 Route::controller(StockController::class)->group(function () {
     Route::get('/', 'showAllStocks');
     Route::get('/cold', 'showColdStocks');
