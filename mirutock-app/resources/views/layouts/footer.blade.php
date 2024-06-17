@@ -15,7 +15,7 @@
           @break
       @endswitch
     </a>
-    <a href="/">
+    <a href="/stocks">
       @switch($pageType)
         @case('cold')
         @case('ice')

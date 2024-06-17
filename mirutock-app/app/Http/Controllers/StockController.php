@@ -75,7 +75,7 @@ class StockController extends Controller
         $stock->limit = $limitDate;
         $stock->save();
 
-        return redirect('/');
+        return redirect('/stocks');
     }
 
     //IDを指定したStockデータ1件の全カラムの内容を更新
@@ -90,7 +90,7 @@ class StockController extends Controller
         $editStock->update(['unit' => $request['unit']]);
         $editStock->update(['limit' => $editlimitDate]);
 
-        return redirect('/');
+        return redirect('/stocks');
     }
 
     //対象の個数と期限のみを更新
@@ -108,6 +108,6 @@ class StockController extends Controller
         $stock = Stock::firstWhere('id', $stockId);
         $stock->delete();
 
-        return redirect('/');
+        return redirect('/stocks');
     }
 }

@@ -29,14 +29,14 @@
                   @endif
                 </div>
                 <div class='list-right'>
-                  <form id="stock-delete" action="/delete/stock/{{$stock->id}}" method="POST">
+                  <form id="stock-delete-{{$stock->id}}" action="/delete/stock/{{$stock->id}}" method="POST">
                     @csrf
                     @method('DELETE')
                   </form>
                   <button class='edit-button' onclick='editStockData({{$stock}})'>
                     <img src="/img/pencil_icon.svg" alt="edit-button">
                   </button>
-                  <button onclick="return confirm('{{$stock->name}}を在庫リストから削除しますか？')" form='stock-delete'>
+                  <button onclick="return confirm('{{$stock->name}}を在庫リストから削除しますか？')" form='stock-delete-{{$stock->id}}'>
                     <img src="/img/delete_icon.svg" alt="delete-icon">
                   </button>
                 </div>

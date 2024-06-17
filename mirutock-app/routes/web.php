@@ -20,12 +20,12 @@ Route::get('/login', function () {
     return view('login');
 });
 
-Route::get('/top', function () {
+Route::get('/', function () {
     return view('top');
 });
 
 Route::controller(StockController::class)->group(function () {
-    Route::get('/', 'showAllStocks');
+    Route::get('/stocks', 'showAllStocks');
     Route::get('/cold', 'showColdStocks');
     Route::get('/ice', 'showIceStocks');
     Route::post('/stock/new', 'insertStock');
