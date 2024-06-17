@@ -43,7 +43,7 @@
           </button>
         </div>
     </div>
-    @include('layouts.footer-stock-ice')
+    @include('layouts.footer', ['pageType' => 'ice'])
     @include('layouts.modal')
     <script script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     @if(app()->environment('local'))

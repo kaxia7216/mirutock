@@ -43,7 +43,7 @@
           </button>
         </div>
     </div>
-    @include('layouts.footer-stock-cold')
+    @include('layouts.footer', ['pageType' => 'cold'])
     @include('layouts.modal')
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     @if(app()->environment('local'))
