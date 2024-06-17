@@ -30,6 +30,18 @@ header {
   cursor: pointer;
 }
 
+.header-center {
+  color: white;
+  display: flex;
+  align-items: center;
+  padding-right: 150px;
+  line-height: 78px;
+}
+
+.header-center h1 {
+  margin: 0;
+}
+
 .header-right a {
   display: block;
   font-size: 20px;
@@ -391,6 +403,11 @@ fieldset {
 }
 
 @media screen and (max-width:500px) {
+  /* ヘッダー */
+  .header-center {
+    display: none;
+  }
+
   /* リストの調整 */
   .list-view {
     padding-bottom: 80px;

@@ -5,7 +5,7 @@
 <html lang="ja">
   @include('layouts.head')
   <body>
-    @include('layouts.header')
+    @include('layouts.header', ['pageType' => 'all'])
     <div class='main-contents'>
         <div class='list-view'>
           <ul>
