@@ -3,12 +3,14 @@ body{
   background-color: #EDF2F7;
 }
 
+/* リスト全体のレイアウト */
 .main-contents {
   margin: 0 300px;
   min-height: 800px;
   background-color: #B5E5E7;
 }
 
+/* ヘッダー */
 header {
   padding: 0 20px;
   background-color: #1E95D4;
@@ -30,6 +32,18 @@ header {
   cursor: pointer;
 }
 
+.header-center {
+  color: white;
+  display: flex;
+  align-items: center;
+  padding-right: 150px;
+  line-height: 78px;
+}
+
+.header-center h1 {
+  margin: 0;
+}
+
 .header-right a {
   display: block;
   font-size: 20px;
@@ -45,6 +59,7 @@ header {
   color: #FFCB67;
 }
 
+/* 各食材リスト */
 .list-view {
   display: flex;
   justify-content: center;
@@ -133,6 +148,7 @@ header {
   border: none;
 }
 
+/* フッター */
 footer {
   height: 63px;
   background-color: #1E95D4;
@@ -141,11 +157,13 @@ footer {
   width: 100%;
 }
 
+/* TOPページとログインページ用フッター */
 .login-footer {
   text-align: center;
   color: white;
 }
 
+/* フッターのアイコン */
 .link-icons {
   display: flex;
   justify-content: space-around;
@@ -391,6 +409,11 @@ fieldset {
 }
 
 @media screen and (max-width:500px) {
+  /* ヘッダー */
+  .header-center {
+    display: none;
+  }
+
   /* リストの調整 */
   .list-view {
     padding-bottom: 80px;

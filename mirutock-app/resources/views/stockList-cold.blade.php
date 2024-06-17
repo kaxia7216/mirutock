@@ -5,7 +5,7 @@
 <html lang="ja">
   @include('layouts.head')
   <body>
-    @include('layouts.header')
+    @include('layouts.header', ['pageType' => 'cold'])
     <div class='main-contents'>
         <div class='list-view'>
           <ul>
@@ -25,11 +25,11 @@
                   @endif
                 </div>
                 <div class='list-right'>
-                  <form id="stock-delete" action="/delete/stock/{{$stock->id}}" method="POST"></form>
+                  <form id="stock-delete-{{$stock->id}}" action="/delete/stock/{{$stock->id}}" method="POST"></form>
                   <button class='edit-button' onclick='editStockData({{$stock}})'>
                     <img src="/img/pencil_icon.svg" alt="edit-button">
                   </button>
-                  <button onclick="return confirm('{{$stock->name}}を在庫リストから削除しますか？')" form='stock-delete'>
+                  <button onclick="return confirm('{{$stock->name}}を在庫リストから削除しますか？')" form='stock-delete-{{$stock->id}}'>
                     <img src="/img/delete_icon.svg" alt="delete-icon">
                   </button>
                 </div>
@@ -43,7 +43,7 @@
           </button>
         </div>
     </div>
-    @include('layouts.footer-stock-cold')
+    @include('layouts.footer', ['pageType' => 'cold'])
     @include('layouts.modal')
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     @if(app()->environment('local'))

@@ -5,7 +5,7 @@
 <html lang="ja">
   @include('layouts.head')
   <body>
-    @include('layouts.header')
+    @include('layouts.header', ['pageType' => 'shopList'])
     <div class='main-contents'>
         <div class='list-view'>
           <ul>
@@ -15,14 +15,14 @@
                   <p>{{$shopList->name}}</p>
                 </div>
                 <div class='list-right'>
-                  <form id="shop-delete" action="/delete/shopList/{{$shopList->id}}" method="POST">
+                  <form id="shop-delete-{{$shopList->id}}" action="/delete/shopList/{{$shopList->id}}" method="POST">
                     @csrf
                     @method('DELETE')
                   </form>
                   <button class='edit-button' onclick='renewShopListData({{$shopList}})'>
                     <img src="/img/pencil_icon.svg" alt="edit-button">
                   </button>
-                  <button onclick="return confirm('{{$shopList->name}}を買い物リストから削除しますか？')" form='shop-delete'>
+                  <button onclick="return confirm('{{$shopList->name}}を買い物リストから削除しますか？')" form='shop-delete-{{$shopList->id}}'>
                     <img src="/img/delete_icon.svg" alt="delete-icon">
                   </button>
                 </div>
@@ -39,7 +39,7 @@
           </button>
         </div>
     </div>
-    @include('layouts.footer-shoplist')
+    @include('layouts.footer', ['pageType' => 'shopList'])
     @include('layouts.modal')
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     @if(app()->environment('local'))
