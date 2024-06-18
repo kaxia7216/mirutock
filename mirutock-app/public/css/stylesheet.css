@@ -20,7 +20,7 @@ header {
   position: fixed;
   top: 0;
   width: 100%;
-  /* z-index: 1; */ /* 必要に応じて修正すること */
+  z-index: 1; /* 必要に応じて修正すること */
 }
 
 .header-left a {
@@ -391,6 +391,64 @@ fieldset {
 
 .return-link a:hover {
   text-decoration: underline;
+}
+
+/* トップページ */
+.top-contents {
+  padding-top: 78px;
+  background-color: #B5E5E7;
+}
+
+.head-message {
+  height: 800px;
+}
+
+.head-img {
+  background-image: url("../img/fridge_img.png");
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 100%;
+}
+
+/* overlay-textのpをスライド表示 */
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.overlay-text {
+  margin-top: 78px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 800px;
+  background: rgba(0, 0, 0, 0.3);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.overlay-text p {
+  margin: 0;
+  padding: 0 20px;
+  text-align: center;
+  font-size: 45px;
+  font-weight: bold;
+  opacity: 0;
+}
+
+.overlay-text p.show {
+  animation: slideIn 1s forwards;
 }
 
 /* 以下、レスポンシブ対応 */
