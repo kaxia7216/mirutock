@@ -38,6 +38,9 @@ jobs:
           echo "${{ steps.renew-env.outputs.content }}" > ./mirutock-app/.env
           cat ./mirutock-app/.env
 
+      - name: Copy .env.mirutock to .env
+        run: cp ./mirutock-app/.env.mirutock ./mirutock-app/.env
+
       # AWS 認証
       - uses: aws-actions/configure-aws-credentials@v4
         with:
