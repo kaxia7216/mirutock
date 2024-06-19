@@ -451,6 +451,77 @@ fieldset {
   animation: slideIn 1s forwards;
 }
 
+.discription,
+.section {
+  margin-top: 20px;
+  padding: 20px;
+}
+
+.discription {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 20px;
+}
+
+.discription p,
+.section p {
+  margin: 10px 0;
+}
+
+.discription h2,
+.features-title {
+  color: white;
+  text-align: center;
+  font-size: 35px;
+  margin-bottom: 0;
+}
+
+.features {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+
+.discription-text p,
+.section p {
+  text-align: center;
+  color: #39A3B5;
+  font-weight: bold;
+}
+
+.discription-text p {
+  font-size: 22px;
+  padding: 0 50px;
+}
+
+.discription-text {
+  width: 60%;
+  text-align: center;
+  padding: 20px 20px;
+  background-color: white;
+  border-radius: 20px;
+  margin: 20px 0;
+}
+
+.discription-text,
+.section {
+  border-radius: 20px;
+  background-color: white;
+}
+
+.section {
+  width: 25%;
+  margin: 0 20px;
+}
+
+.section p {
+  font-size: 20px;
+}
+
 /* 以下、レスポンシブ対応 */
 @media screen and (max-width:1200px) {
   .main-contents{
@@ -514,9 +585,6 @@ fieldset {
   fieldset {
     padding: 5.6px 0px 5.6px 3px;
   }
-  /* .add-form fieldset{
-    margin-bottom: 35px;
-  } */
 
   .add-form legend {
     font-size: 20px;
@@ -566,5 +634,22 @@ fieldset {
 
   .login-footer {
     font-size: 12px;
+  }
+
+  .head-message {
+    height: 400px;
+  }
+
+  .overlay-text {
+    height: 400px;
+  }
+
+  .overlay-text p {
+    font-size: 27px;
+  }
+
+  .overlay-text .phrase {
+    font-size: 20px;
+    padding-bottom: 27px;
   }
 }

@@ -10,15 +10,18 @@
       <div class="head-message">
         <div class="head-img"></div>
         <div class="overlay-text">
-          <p>「あ、あれ買っとくの忘れてた…」</p>
+          <p class="phrase">「あ、あれ買っとくの忘れてた…」</p>
           <p>そんなあなたのために、ストレスフリーな食材管理を実現します。</p>
         </div>
       </div>
-      <div class="product-discription">
+      <div class="discription">
         <h2>「ミルトック」とは？</h2>
-        <p>「ミルトック」は食材管理をシンプルにするアプリです。</p>
-        <p>買い物リストも自動で作成してくれるので、余計な買い物を減らす事ができます。忙しい方にも日常に便利な食材管理アプリです。</p>
+        <div class="discription-text">
+          <p>「ミルトック」は食材管理をシンプルにするアプリです。</p>
+          <p>買い物リストも自動で作成してくれるので、余計な買い物を減らす事ができます。<br>忙しい方にも日常に便利な食材管理アプリです。</p>
+        </div>
       </div>
+      <h2 class="features-title">サービス特徴</h2>
       <div class="features">
         <div class="section">
           {{-- <img src="/img/fridge_img.png" alt="fridge_img"> --}}
@@ -27,7 +30,7 @@
         </div>
         <div class="section">
           {{-- <img src="/img/fridge_img.png" alt="fridge_img"> --}}
-          <p>期限が近い、残り数が少ない食材は自動的に買い物リストに登録されます。</p>
+          <p>期限が近い、または残りの数が少ない食材は、ワンタップで自動的に買い物リストに登録されます。</p>
         </div>
         <div class="section">
           {{-- <img src="/img/fridge_img.png" alt="fridge_img"> --}}
