@@ -1,8 +1,12 @@
 const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+const hamburgerMenu = document.querySelector('.hamburger-menu');
+const dropdownMenu = document.querySelector('.dropdown-menu');
 const modalButton = document.querySelector('.modal-button');
 const editModalButton = document.querySelector('.edit-button');
 const layer = document.querySelector('.layer');
 const modal = document.querySelector('.modal');
+
+let dropdownMenuVisible = false;
 
 if(modalButton){
   //モーダルを開く
@@ -204,4 +208,27 @@ function decrementPieces() {
   const piecesInput = document.getElementById('piece-number');
   const valueNow = parseInt(piecesInput.value);
   piecesInput.value = valueNow - 1;
+}
+
+document.addEventListener('click', function(event) {
+  // クリックされた要素がドロップダウンメニュー自体、またはその内部要素である場合は何もしない
+  if (event.target.closest('.dropdown-menu')) return;
+
+  // ドロップダウンメニューが表示されている場合は非表示にする
+  if (dropdownMenuVisible) {
+      dropdownMenu.classList.remove('show');
+      dropdownMenuVisible = false;
+  }
+});
+
+// ハンバーガーメニューをクリックした際の処理
+if (hamburgerMenu) {
+  hamburgerMenu.addEventListener('click', function(event) {
+    // メニューを表示・非表示の切り替え
+    dropdownMenu.classList.toggle('show');
+    dropdownMenuVisible = !dropdownMenuVisible;
+
+    // クリックイベントの伝播を止める（ドロップダウンメニュー以外のクリックで閉じないようにする）
+    event.stopPropagation();
+});
 }

@@ -1,6 +1,7 @@
 body{
   margin: 0 auto;
   background-color: #EDF2F7;
+  overflow-x: hidden;
 }
 
 /* リスト全体のレイアウト */
@@ -17,10 +18,11 @@ header {
   height: 78px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   position: fixed;
   top: 0;
   width: 100%;
-  /* z-index: 1; */ /* 必要に応じて修正すること */
+  z-index: 1; /* 必要に応じて修正すること */
 }
 
 .header-left a {
@@ -44,11 +46,17 @@ header {
   margin: 0;
 }
 
+.header-right {
+  display: flex;
+  align-items: center;
+}
+
 .header-right a {
   display: block;
   font-size: 20px;
   text-decoration: none;
   color: white;
+  font-weight: bold;
   line-height: 78px;
   padding-right: 40px;
   cursor: pointer;
@@ -57,6 +65,40 @@ header {
 .header-right a:hover {
   text-decoration: none;
   color: #FFCB67;
+}
+
+/* ハンバーガーメニューとプルダウンメニューのスタイル */
+.hamburger-menu {
+  display: none;
+  cursor: pointer;
+}
+
+.dropdown-menu {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: 78px;
+  right: 40px;
+  background-color: white;
+  border-radius: 0 0 0 13px;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown-menu a {
+  font-weight: bold;
+  color: #1E95D4;
+  text-decoration: none;
+  padding: 10px;
+  text-align: center;
+}
+
+.dropdown-menu a:hover {
+  background-color: #FFCB67;
+}
+
+/* プルダウンメニュー表示時のスタイル */
+.dropdown-menu.show {
+  display: flex;
 }
 
 /* 各食材リスト */
@@ -163,6 +205,17 @@ footer {
   color: white;
 }
 
+.top-footer {
+  position: relative;
+  text-align: center;
+  line-height: 63px;
+  color: white;
+}
+
+.top-footer p {
+  margin: 0;
+}
+
 /* フッターのアイコン */
 .link-icons {
   display: flex;
@@ -229,7 +282,6 @@ footer {
 
 fieldset {
   border: none;
-  /* position: relative; */
 }
 
 .add-form legend {
@@ -356,7 +408,7 @@ fieldset {
 .login-link {
   display: grid;
   place-items: center;
-  height: 100vh;
+  height: 94.10vh;
   background-color: #B5E5E7;
 }
 
@@ -393,6 +445,171 @@ fieldset {
   text-decoration: underline;
 }
 
+/* トップページ */
+.top-contents {
+  margin: 0; /* 中央揃え */
+  padding: 0; /* 左右のパディングを追加 */
+  background-color: #B5E5E7;
+  width: 100%; /* 適宜最大幅を設定 */
+}
+
+.head-message {
+  padding-top: 78px;
+  height: 800px;
+  position: relative;
+}
+
+.head-img {
+  padding-top: 78px;
+  background-image: url("../img/fridge_img.png");
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 100%;
+}
+
+/* overlay-textのpをスライド表示 */
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.overlay-text {
+  margin-top: 78px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.overlay-text p {
+  margin: 0;
+  padding: 0 20px;
+  text-align: center;
+  font-size: 45px;
+  font-weight: bold;
+  opacity: 0;
+}
+
+.overlay-text p.show {
+  animation: slideIn 1s forwards;
+}
+
+.discription,
+.section {
+  margin-top: 80px;
+  padding: 20px;
+}
+
+.section {
+  min-height: 400px;
+}
+
+.discription {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 20px;
+}
+
+.discription p,
+.section p {
+  margin: 10px 0;
+}
+
+.discription h2,
+.features-title {
+  color: white;
+  text-align: center;
+  font-size: 35px;
+  margin-bottom: 10px;
+}
+
+.features {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+
+.discription-text p,
+.section p {
+  text-align: center;
+  color: #39A3B5;
+  font-weight: bold;
+}
+
+.discription-text p {
+  font-size: 22px;
+  padding: 0 50px;
+}
+
+.discription-text {
+  width: 60%;
+  text-align: center;
+  padding: 20px 20px;
+  background-color: white;
+  border-radius: 20px;
+  margin: 20px 0;
+}
+
+.discription-text,
+.section {
+  border-radius: 20px;
+  background-color: white;
+}
+
+.section {
+  width: 25%;
+  margin: 0 20px;
+}
+
+.section p {
+  font-size: 20px;
+  color: #39A3B5;
+  font-weight: bold;
+}
+
+.start-link {
+  text-align: center;
+  margin-top: 60px;
+  padding-bottom: 100px;
+}
+
+.start-link p {
+  font-size: 35px;
+  font-weight: bold;
+  color: white;
+}
+
+.start-link a {
+  display: inline-block;
+  padding: 20px 60px;
+  font-size: 30px;
+  color: white;
+  background-color: #FFCB67;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.35);
+}
+
 /* 以下、レスポンシブ対応 */
 @media screen and (max-width:1200px) {
   .main-contents{
@@ -412,6 +629,15 @@ fieldset {
   /* ヘッダー */
   .header-center {
     display: none;
+  }
+
+  .header-right .logout-link {
+    display: none;
+  }
+
+  .hamburger-menu {
+    display: block;
+    padding-right:35px;
   }
 
   /* リストの調整 */
@@ -456,9 +682,6 @@ fieldset {
   fieldset {
     padding: 5.6px 0px 5.6px 3px;
   }
-  /* .add-form fieldset{
-    margin-bottom: 35px;
-  } */
 
   .add-form legend {
     font-size: 20px;
@@ -508,5 +731,22 @@ fieldset {
 
   .login-footer {
     font-size: 12px;
+  }
+
+  .head-message {
+    height: 400px;
+  }
+
+  .overlay-text {
+    height: 400px;
+  }
+
+  .overlay-text p {
+    font-size: 27px;
+  }
+
+  .overlay-text .phrase {
+    font-size: 20px;
+    padding-bottom: 27px;
   }
 }
