@@ -1,6 +1,7 @@
 body{
   margin: 0 auto;
   background-color: #EDF2F7;
+  overflow-x: hidden;
 }
 
 /* リスト全体のレイアウト */
@@ -395,12 +396,16 @@ fieldset {
 
 /* トップページ */
 .top-contents {
-  padding-top: 78px;
+  margin: 0; /* 中央揃え */
+  padding: 0; /* 左右のパディングを追加 */
   background-color: #B5E5E7;
+  width: 100%; /* 適宜最大幅を設定 */
 }
 
 .head-message {
+  padding-top: 78px;
   height: 800px;
+  position: relative;
 }
 
 .head-img {
@@ -424,12 +429,11 @@ fieldset {
 }
 
 .overlay-text {
-  margin-top: 78px;
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 800px;
+  height: 100%;
   background: rgba(0, 0, 0, 0.3);
   color: white;
   display: flex;
@@ -457,6 +461,10 @@ fieldset {
   padding: 20px;
 }
 
+.section {
+  min-height: 400px;
+}
+
 .discription {
   display: flex;
   flex-direction: column;
@@ -476,7 +484,7 @@ fieldset {
   color: white;
   text-align: center;
   font-size: 35px;
-  margin-bottom: 0;
+  margin-bottom: 10px;
 }
 
 .features {
@@ -520,6 +528,8 @@ fieldset {
 
 .section p {
   font-size: 20px;
+  color: #39A3B5;
+  font-weight: bold;
 }
 
 /* 以下、レスポンシブ対応 */
