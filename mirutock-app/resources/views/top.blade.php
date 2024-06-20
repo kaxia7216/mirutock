@@ -15,9 +15,9 @@
         </div>
       </div>
       <div class="discription">
-        <h2>「ミルトック」とは？</h2>
+        <h2>「Mirutock」とは？</h2>
         <div class="discription-text">
-          <p>「ミルトック」は食材管理をシンプルにするアプリです。</p>
+          <p>「Mirutock」は食材管理をシンプルにするアプリです。</p>
           <p>買い物リストも自動で作成してくれるので、余計な買い物を減らす事ができます。<br>忙しい方にも日常に便利な食材管理アプリです。</p>
         </div>
       </div>
@@ -34,15 +34,15 @@
         </div>
         <div class="section">
           {{-- <img src="/img/fridge_img.png" alt="fridge_img"> --}}
-          <p>買い物リストにある食材を購入したら、食材リストを更新しましょう。</p>
+          <p>買い物を済ませたら、食材リストを更新しましょう。</p>
         </div>
       </div>
       <div class="start-link">
         <p>さあ、今すぐ始めてみましょう！</p>
-        <a href="/stocks">ミルトックを使ってみる</a>
+        <a href="/stocks">Mirutockを使ってみる</a>
       </div>
     </div>
-    {{-- @include('layouts.footer-login') --}}
+    @include('layouts.footer-top')
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     @if(app()->environment('local'))
       <script src="{{ asset('js/top-page.js') }}" type="text/javascript"></script>

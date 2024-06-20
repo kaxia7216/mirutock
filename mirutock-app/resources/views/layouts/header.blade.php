@@ -22,6 +22,12 @@
           @endswitch
         </div>
         <div class='header-right'>
-          <a href="/">logout</a>
+          <a href="/" class="logout-link">logout</a>
+          <div class="hamburger-menu">
+            <img src="/img/menu_icon.svg" alt="">
+          </div>
+          <div class="dropdown-menu">
+              <a href="/">logout</a>
+          </div>
         </div>
 </header>
