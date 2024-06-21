@@ -514,51 +514,29 @@ fieldset {
   padding: 20px;
 }
 
-.section {
-  display: flex; /* Flexboxを使用 */
-  flex-direction: column; /* 垂直方向にアイテムを配置 */
-  align-items: center; /* 水平方向に中央揃え */
-  justify-content: center; /* 垂直方向に中央揃え */
-  text-align: center; /* テキストを中央揃え */
-  width: 25%;
-  margin: 0 20px;
-  min-height: 500px; /* 最低高さを設定 */
-  padding: 20px; /* パディングを追加 */
-  background-color: white; /* 背景色を指定 */
-  border-radius: 20px; /* 角を丸くする */
-}
-
-.section img {
-  border-radius: 20px;
-  max-width: 100%; /* 画像の最大幅を親要素の幅に合わせる */
-  height: auto; /* 画像の高さを自動調整 */
-  margin-bottom: 20px; /* 画像の下に余白を追加 */
-}
-
 .discription {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 100%;
-  padding: 20px;
 }
 
 .discription p,
 .section p {
-  margin: 10px 0;
+  margin: 0px;
 }
 
 .discription h2,
 .features-title {
   color: white;
-  text-align: center;
   font-size: 35px;
   margin-bottom: 10px;
 }
 
 .features-title {
   margin-bottom: 30px;
+  text-align: center;
 }
 
 .features {
@@ -573,19 +551,12 @@ fieldset {
   text-align: center;
   color: #39A3B5;
   font-weight: bold;
-}
-
-.discription-text p {
   font-size: 22px;
-  padding: 0 50px;
 }
 
 .discription-text {
   width: 60%;
-  text-align: center;
   padding: 20px 20px;
-  background-color: white;
-  border-radius: 20px;
   margin: 20px 0;
 }
 
@@ -596,8 +567,24 @@ fieldset {
 }
 
 .section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   width: 25%;
   margin: 0 20px;
+  min-height: 500px;
+  padding: 20px;
+  background-color: white;
+  border-radius: 20px;
+}
+
+.section img {
+  border-radius: 20px;
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 20px;
 }
 
 .section p {
@@ -624,7 +611,7 @@ fieldset {
   font-size: 30px;
   color: white;
   background-color: #FFCB67;
-  border-radius: 20px;
+  border-radius: 25px;
   text-decoration: none;
   font-weight: bold;
   cursor: pointer;
@@ -755,11 +742,11 @@ fieldset {
   }
 
   .head-message {
-    height: 400px;
+    height: 300px;
   }
 
   .overlay-text {
-    height: 400px;
+    height: 300px;
   }
 
   .overlay-text p {
@@ -768,6 +755,67 @@ fieldset {
 
   .overlay-text .phrase {
     font-size: 20px;
-    padding-bottom: 27px;
+    padding-bottom: 10px;
+  }
+
+  .discription {
+    display: block;
+  }
+
+  .discription h2 {
+    font-size: 23px;
+    margin-bottom: 5px;
+  }
+
+  .discription-text {
+    width: 80%;
+    margin: 0;
+  }
+
+  .discription-text p {
+    font-size: 16px;
+    text-align: left;
+    padding: 0;
+    font-weight: bolder;
+  }
+
+  .features-title {
+    font-size: 23px;
+    text-align: left;
+    padding-left: 20px;
+    margin-bottom: 5px;
+  }
+
+  .features {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .section {
+    width: 80%;
+    margin-bottom: 20px;
+    min-height: 200px;
+  }
+
+  .section p {
+    font-size: 16px;
+    font-weight: bolder;
+  }
+
+  .start-link {
+    margin-top: 120px;
+  }
+
+  .start-link p {
+    font-size: 22px;
+  }
+
+  .start-link a {
+    font-size: 20px;
+    padding: 15px 35px;
+  }
+
+  .top-footer p {
+    font-size: 12px;
   }
 }
