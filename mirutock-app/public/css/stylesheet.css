@@ -22,7 +22,7 @@ header {
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 1; /* 必要に応じて修正すること */
+  z-index: 1;
 }
 
 .header-left a {
@@ -447,10 +447,10 @@ fieldset {
 
 /* トップページ */
 .top-contents {
-  margin: 0; /* 中央揃え */
-  padding: 0; /* 左右のパディングを追加 */
+  margin: 0;
+  padding: 0;
   background-color: #B5E5E7;
-  width: 100%; /* 適宜最大幅を設定 */
+  width: 100%;
 }
 
 .head-message {
@@ -515,7 +515,24 @@ fieldset {
 }
 
 .section {
-  min-height: 400px;
+  display: flex; /* Flexboxを使用 */
+  flex-direction: column; /* 垂直方向にアイテムを配置 */
+  align-items: center; /* 水平方向に中央揃え */
+  justify-content: center; /* 垂直方向に中央揃え */
+  text-align: center; /* テキストを中央揃え */
+  width: 25%;
+  margin: 0 20px;
+  min-height: 500px; /* 最低高さを設定 */
+  padding: 20px; /* パディングを追加 */
+  background-color: white; /* 背景色を指定 */
+  border-radius: 20px; /* 角を丸くする */
+}
+
+.section img {
+  border-radius: 20px;
+  max-width: 100%; /* 画像の最大幅を親要素の幅に合わせる */
+  height: auto; /* 画像の高さを自動調整 */
+  margin-bottom: 20px; /* 画像の下に余白を追加 */
 }
 
 .discription {
@@ -538,6 +555,10 @@ fieldset {
   text-align: center;
   font-size: 35px;
   margin-bottom: 10px;
+}
+
+.features-title {
+  margin-bottom: 30px;
 }
 
 .features {
@@ -587,8 +608,8 @@ fieldset {
 
 .start-link {
   text-align: center;
-  margin-top: 60px;
-  padding-bottom: 100px;
+  margin-top: 150px;
+  padding-bottom: 180px;
 }
 
 .start-link p {

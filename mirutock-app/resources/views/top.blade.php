@@ -18,22 +18,23 @@
         <h2>「Mirutock」とは？</h2>
         <div class="discription-text">
           <p>「Mirutock」は食材管理をシンプルにするアプリです。</p>
+          <p>直感的な操作で、食材管理の負担を減らすことができます。</p>
           <p>買い物リストも自動で作成してくれるので、余計な買い物を減らす事ができます。<br>忙しい方にも日常に便利な食材管理アプリです。</p>
         </div>
       </div>
       <h2 class="features-title">サービス特徴</h2>
       <div class="features">
         <div class="section">
-          {{-- <img src="/img/fridge_img.png" alt="fridge_img"> --}}
+          <img src="/img/stocksPage.png" alt="stocks_useImg">
           <p>何も難しいことはありません。</p>
-          <p>今ある食材は食材リストに登録するだけ。</p>
+          <p>冷蔵庫にある食材は食材リストに追加ボタンで登録するだけ。</p>
         </div>
         <div class="section">
-          {{-- <img src="/img/fridge_img.png" alt="fridge_img"> --}}
+          <img src="/img/shopListPage.png" alt="shopList_useImg">
           <p>期限が近い、または残りの数が少ない食材は、ワンタップで自動的に買い物リストに登録されます。</p>
         </div>
         <div class="section">
-          {{-- <img src="/img/fridge_img.png" alt="fridge_img"> --}}
+          <img src="/img/shopListPage_change.png" alt="shopListChange_useImg">
           <p>買い物を済ませたら、食材リストを更新しましょう。</p>
         </div>
       </div>
