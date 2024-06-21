@@ -22,7 +22,7 @@ header {
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 1; /* 必要に応じて修正すること */
+  z-index: 1;
 }
 
 .header-left a {
@@ -447,10 +447,10 @@ fieldset {
 
 /* トップページ */
 .top-contents {
-  margin: 0; /* 中央揃え */
-  padding: 0; /* 左右のパディングを追加 */
+  margin: 0;
+  padding: 0;
   background-color: #B5E5E7;
-  width: 100%; /* 適宜最大幅を設定 */
+  width: 100%;
 }
 
 .head-message {
@@ -514,30 +514,29 @@ fieldset {
   padding: 20px;
 }
 
-.section {
-  min-height: 400px;
-}
-
 .discription {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 100%;
-  padding: 20px;
 }
 
 .discription p,
 .section p {
-  margin: 10px 0;
+  margin: 0px;
 }
 
 .discription h2,
 .features-title {
   color: white;
-  text-align: center;
   font-size: 35px;
   margin-bottom: 10px;
+}
+
+.features-title {
+  margin-bottom: 30px;
+  text-align: center;
 }
 
 .features {
@@ -552,19 +551,12 @@ fieldset {
   text-align: center;
   color: #39A3B5;
   font-weight: bold;
-}
-
-.discription-text p {
   font-size: 22px;
-  padding: 0 50px;
 }
 
 .discription-text {
   width: 60%;
-  text-align: center;
   padding: 20px 20px;
-  background-color: white;
-  border-radius: 20px;
   margin: 20px 0;
 }
 
@@ -575,8 +567,24 @@ fieldset {
 }
 
 .section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   width: 25%;
   margin: 0 20px;
+  min-height: 500px;
+  padding: 20px;
+  background-color: white;
+  border-radius: 20px;
+}
+
+.section img {
+  border-radius: 20px;
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 20px;
 }
 
 .section p {
@@ -587,8 +595,8 @@ fieldset {
 
 .start-link {
   text-align: center;
-  margin-top: 60px;
-  padding-bottom: 100px;
+  margin-top: 150px;
+  padding-bottom: 180px;
 }
 
 .start-link p {
@@ -603,7 +611,7 @@ fieldset {
   font-size: 30px;
   color: white;
   background-color: #FFCB67;
-  border-radius: 20px;
+  border-radius: 25px;
   text-decoration: none;
   font-weight: bold;
   cursor: pointer;
@@ -734,11 +742,11 @@ fieldset {
   }
 
   .head-message {
-    height: 400px;
+    height: 300px;
   }
 
   .overlay-text {
-    height: 400px;
+    height: 300px;
   }
 
   .overlay-text p {
@@ -747,6 +755,67 @@ fieldset {
 
   .overlay-text .phrase {
     font-size: 20px;
-    padding-bottom: 27px;
+    padding-bottom: 10px;
+  }
+
+  .discription {
+    display: block;
+  }
+
+  .discription h2 {
+    font-size: 23px;
+    margin-bottom: 5px;
+  }
+
+  .discription-text {
+    width: 80%;
+    margin: 0;
+  }
+
+  .discription-text p {
+    font-size: 16px;
+    text-align: left;
+    padding: 0;
+    font-weight: bolder;
+  }
+
+  .features-title {
+    font-size: 23px;
+    text-align: left;
+    padding-left: 20px;
+    margin-bottom: 5px;
+  }
+
+  .features {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .section {
+    width: 80%;
+    margin-bottom: 20px;
+    min-height: 200px;
+  }
+
+  .section p {
+    font-size: 16px;
+    font-weight: bolder;
+  }
+
+  .start-link {
+    margin-top: 120px;
+  }
+
+  .start-link p {
+    font-size: 22px;
+  }
+
+  .start-link a {
+    font-size: 20px;
+    padding: 15px 35px;
+  }
+
+  .top-footer p {
+    font-size: 12px;
   }
 }
