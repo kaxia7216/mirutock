@@ -6,6 +6,7 @@
 URL: https://mirutock.click/
 
 ### メインページ
+![mainPage](./documents/webSite_screenshot.png)
 
 ## 使用技術
 
@@ -32,7 +33,7 @@ URL: https://mirutock.click/
 
 ## ER 図
 
-![Mirutock_ER図](https://www.plantuml.com/plantuml/png/PO_D3OCm38Nldi8BP0E4EFNI8L14hDPgVYBY711qznee5IgNVD9B_EMvAs97gS43K1IM2MkXiU0CYEnGpsW38Rn_zqNIyBe-m6smrwXfRlUsrK2cJ8hCDAoiaKNXER0OPuNEqcVAcUEZzrpaa0FkdvsaEh7tMnPZqlmj0nkEy5y6q55qwueV)
+![Mirutock_ER図](https://www.plantuml.com/plantuml/png/NOvB2iCm34JtEeKku1k4a5KtFKGmiMX5_J6Hl0X9xrwPjWIoqOE1UPf9rA_QKWIWhAmRYfRb9RW38WUqctsYpYQqpXODm-q-ZXReLibGcPREbbaDaHEh2ru9tgVqMMhb_9WZY_xbWDzdfxGtu3VWE9mh-wK94-LWQpy0)
 
 ## インフラ構成図
 
@@ -48,7 +49,7 @@ URL: https://mirutock.click/
 - 買い物リストの編集による、食材データへの更新機能
 - 買い物リストの削除機能
 
-## 工夫したところ
+## 工夫点
 
 - フロントエンド
   - 直感的に操作できるような Web デザイン
