@@ -1,22 +1,24 @@
-const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-const hamburgerMenu = document.querySelector('.hamburger-menu');
-const dropdownMenu = document.querySelector('.dropdown-menu');
-const modalButton = document.querySelector('.modal-button');
-const editModalButton = document.querySelector('.edit-button');
-const layer = document.querySelector('.layer');
-const modal = document.querySelector('.modal');
+const csrfToken = document
+    .querySelector('meta[name="csrf-token"]')
+    .getAttribute("content");
+const hamburgerMenu = document.querySelector(".hamburger-menu");
+const dropdownMenu = document.querySelector(".dropdown-menu");
+const modalButton = document.querySelector(".modal-button");
+const editModalButton = document.querySelector(".edit-button");
+const layer = document.querySelector(".layer");
+const modal = document.querySelector(".modal");
 
 let dropdownMenuVisible = false;
 
-if(modalButton){
-  //モーダルを開く
-  modalButton.addEventListener('click', function() {
-    layer.classList.add('active');
-    modal.style.transform = 'translateX(-50%) translateY(0)';
+if (modalButton) {
+    //モーダルを開く
+    modalButton.addEventListener("click", function () {
+        layer.classList.add("active");
+        modal.style.transform = "translateX(-50%) translateY(0)";
 
-    //フォームの内容を追加する処理
-    const newCreateModal = document.getElementById('modal__content');
-    newCreateModal.innerHTML = `
+        //フォームの内容を追加する処理
+        const newCreateModal = document.getElementById("modal__content");
+        newCreateModal.innerHTML = `
       <form action="/stock/new" method='POST' class='add-form'>
         <fieldset>
           <input type="hidden" name="_token" value="${csrfToken}">
@@ -62,26 +64,26 @@ if(modalButton){
         </fieldset>
       </form>
     `;
-  });
+    });
 }
 
 //モーダルを閉じる
-layer.addEventListener('click', function(event) {
-  if (event.target === layer || event.target === modal) {
-    layer.classList.remove('active');
-    modal.style.transform = 'translateX(-50%) translateY(100%)';
-  }
+layer.addEventListener("click", function (event) {
+    if (event.target === layer || event.target === modal) {
+        layer.classList.remove("active");
+        modal.style.transform = "translateX(-50%) translateY(100%)";
+    }
 });
 
 //編集時のモーダル表示
-function editStockData(stock){
-  layer.classList.add('active');
-  modal.style.transform = 'translateX(-50%) translateY(0)';
+function editStockData(stock) {
+    layer.classList.add("active");
+    modal.style.transform = "translateX(-50%) translateY(0)";
 
-  //フォームの内容を追加する処理
-  const editModal = document.getElementById('modal__content');
-  const limitDate = stock.limit.split('-');
-  let htmlString = `
+    //フォームの内容を追加する処理
+    const editModal = document.getElementById("modal__content");
+    const limitDate = stock.limit.split("-");
+    let htmlString = `
   <form action="/stock/edit/${stock.id}" method='POST' class='add-form'>
     <fieldset>
       <input type="hidden" name="_token" value="${csrfToken}">
@@ -106,8 +108,8 @@ function editStockData(stock){
       </fieldset>
   `;
 
-  if(stock.type === 'cold'){
-    htmlString += `
+    if (stock.type === "cold") {
+        htmlString += `
     <fieldset>
       <label>保存先</label>
       <select class='keep-select' name='select-type'>
@@ -117,8 +119,8 @@ function editStockData(stock){
       </select>
     </fieldset>
     `;
-  } else {
-    htmlString += `
+    } else {
+        htmlString += `
     <fieldset>
       <label>保存先</label>
       <select class='keep-select' name='select-type'>
@@ -128,9 +130,9 @@ function editStockData(stock){
       </select>
     </fieldset>
     `;
-  }
+    }
 
-  htmlString += `
+    htmlString += `
             <label>消費(賞味)期限</label>
             <div class='limit-form'>
               <input type="text" name='limit-year' value='${limitDate[0]}'>
@@ -146,29 +148,29 @@ function editStockData(stock){
     </form>
   `;
 
-  editModal.innerHTML = htmlString;
+    editModal.innerHTML = htmlString;
 }
 
-function renewShopListData(shopList){
-  layer.classList.add('active');
-  modal.style.transform = 'translateX(-50%) translateY(0)';
+function renewShopListData(shopList) {
+    layer.classList.add("active");
+    modal.style.transform = "translateX(-50%) translateY(0)";
 
-  const editModal = document.getElementById('modal__content');
-  const limitDate = shopList.limit.split('-');
-  let htmlString = `
+    const editModal = document.getElementById("modal__content");
+    const limitDate = shopList.limit.split("-");
+    let htmlString = `
   <form action="/shoplist/renew/${shopList.id}" method='POST' class='add-form'>
     <fieldset>
       <input type="hidden" name="_token" value="${csrfToken}">
       <legend>食材の再追加</legend>
   `;
 
-  if(shopList.type === 'cold'){
-    htmlString += `<legend>${shopList.name} : 冷蔵</legend>`;
-  } else {
-    htmlString += `<legend>${shopList.name} : 冷凍</legend>`;
-  }
+    if (shopList.type === "cold") {
+        htmlString += `<legend>${shopList.name} : 冷蔵</legend>`;
+    } else {
+        htmlString += `<legend>${shopList.name} : 冷凍</legend>`;
+    }
 
-  htmlString += `
+    htmlString += `
             <fieldset class='pieces'>
               <label>個数</label>
               <button type='button' class='decrement-button' onclick='decrementPieces()'>
@@ -194,41 +196,41 @@ function renewShopListData(shopList){
     </form>
   `;
 
-  editModal.innerHTML = htmlString;
+    editModal.innerHTML = htmlString;
 }
 
 //個数入力の矢印ボタン
 function incrementPieces() {
-  const piecesInput = document.getElementById('piece-number');
-  const valueNow = parseInt(piecesInput.value);
-  piecesInput.value = valueNow + 1;
+    const piecesInput = document.getElementById("piece-number");
+    const valueNow = parseInt(piecesInput.value);
+    piecesInput.value = valueNow + 1;
 }
 
 function decrementPieces() {
-  const piecesInput = document.getElementById('piece-number');
-  const valueNow = parseInt(piecesInput.value);
-  piecesInput.value = valueNow - 1;
+    const piecesInput = document.getElementById("piece-number");
+    const valueNow = parseInt(piecesInput.value);
+    piecesInput.value = valueNow - 1;
 }
 
-document.addEventListener('click', function(event) {
-  // クリックされた要素がドロップダウンメニュー自体、またはその内部要素である場合は何もしない
-  if (event.target.closest('.dropdown-menu')) return;
+document.addEventListener("click", function (event) {
+    // クリックされた要素がドロップダウンメニュー自体、またはその内部要素である場合は何もしない
+    if (event.target.closest(".dropdown-menu")) return;
 
-  // ドロップダウンメニューが表示されている場合は非表示にする
-  if (dropdownMenuVisible) {
-      dropdownMenu.classList.remove('show');
-      dropdownMenuVisible = false;
-  }
+    // ドロップダウンメニューが表示されている場合は非表示にする
+    if (dropdownMenuVisible) {
+        dropdownMenu.classList.remove("show");
+        dropdownMenuVisible = false;
+    }
 });
 
 // ハンバーガーメニューをクリックした際の処理
 if (hamburgerMenu) {
-  hamburgerMenu.addEventListener('click', function(event) {
-    // メニューを表示・非表示の切り替え
-    dropdownMenu.classList.toggle('show');
-    dropdownMenuVisible = !dropdownMenuVisible;
+    hamburgerMenu.addEventListener("click", function (event) {
+        // メニューを表示・非表示の切り替え
+        dropdownMenu.classList.toggle("show");
+        dropdownMenuVisible = !dropdownMenuVisible;
 
-    // クリックイベントの伝播を止める（ドロップダウンメニュー以外のクリックで閉じないようにする）
-    event.stopPropagation();
-});
+        // クリックイベントの伝播を止める（ドロップダウンメニュー以外のクリックで閉じないようにする）
+        event.stopPropagation();
+    });
 }
