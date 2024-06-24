@@ -349,6 +349,10 @@ fieldset {
     outline: none;
 }
 
+.limit-form {
+    display: none;
+}
+
 .limit-form input {
     width: 100px;
 }
@@ -616,6 +620,58 @@ fieldset {
     font-weight: bold;
     cursor: pointer;
     box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.35);
+}
+
+/* トグルボタン */
+.toggle_input {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+    opacity: 0;
+}
+
+.toggle_label {
+    width: 55px;
+    height: 22px;
+    background: #ccc;
+    position: relative;
+    display: inline-block;
+    border-radius: 40px;
+    transition: 0.4s;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.toggle_label:after {
+    content: "";
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    border-radius: 100%;
+    left: 0;
+    top: 0;
+    z-index: 2;
+    background: #fff;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    transition: 0.4s;
+}
+
+.toggle_input:checked + .toggle_label {
+    background-color: #4bd865;
+}
+
+.toggle_input:checked + .toggle_label:after {
+    left: 33px;
+}
+
+.toggle_button {
+    position: relative;
+    width: 55px;
+    height: 22px;
+    /* margin: auto; */
 }
 
 /* 以下、レスポンシブ対応 */
