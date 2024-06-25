@@ -47,7 +47,7 @@
             </ul>
         </div>
         <div class='add-button'>
-            <button class='modal-button'>
+            <button class='modal-button' onclick='addStockNewData()'>
                 +
             </button>
         </div>
