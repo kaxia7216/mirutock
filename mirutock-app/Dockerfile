@@ -32,7 +32,6 @@ RUN composer install \
 RUN php artisan config:cache
 RUN php artisan route:cache
 RUN php artisan view:cache
-RUN php artisan migrate
 RUN curl -sL https://deb.nodesource.com/setup_lts.x | bash -
 RUN apt-get install -y nodejs
 RUN npm install npm@latest
