@@ -15,9 +15,9 @@
                             <p>{{ $stock->name }}</p>
                         </div>
                         <div class='list-center'>
-                            <p>残り{{ $stock->piece }}{{ $stock->unit }}</p>
+                            <p>残り {{ $stock->piece }}</p>
                             @if ($diffDays[$keys] > 0)
-                                <p>あと{{ $diffDays[$keys] }}日</p>
+                                <p>あと {{ $diffDays[$keys] }}日</p>
                             @elseif ($diffDays[$keys] < 0)
                                 <p>期限切れ</p>
                             @else

@@ -64,10 +64,6 @@ function addStockNewData() {
         <img src="/img/right_arrow.svg" alt="right_arro">
       </button>
     </fieldset>
-    <fieldset class='set-unit'>
-      <label>単位</label>
-      <input type="text" name='unit'>
-    </fieldset>
     <fieldset>
       <label>保存先</label>
       <select class='keep-select' name='select-type'>
@@ -125,10 +121,6 @@ function editStockData(stock) {
       <button type='button' class='increment-button' onclick='incrementPieces()'>
         <img src="/img/right_arrow.svg" alt="right_arro">
       </button>
-    </fieldset>
-    <fieldset class='set-unit'>
-      <label>単位</label>
-      <input type="text" name='unit' value='${stock.unit}'>
     </fieldset>
 `;
 

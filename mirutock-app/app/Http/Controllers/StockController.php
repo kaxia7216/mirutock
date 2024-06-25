@@ -71,7 +71,6 @@ class StockController extends Controller
         $stock->name = $request['name'];
         $stock->type = $request['select-type'];
         $stock->piece = $request['piece'];
-        $stock->unit = $request['unit'];
         $stock->limit = $limitDate;
         $stock->save();
 
@@ -87,7 +86,6 @@ class StockController extends Controller
         $editStock->update(['name' => $request['name']]);
         $editStock->update(['type' => $request['select-type']]);
         $editStock->update(['piece' => $request['piece']]);
-        $editStock->update(['unit' => $request['unit']]);
         $editStock->update(['limit' => $editlimitDate]);
 
         return redirect('/stocks');
