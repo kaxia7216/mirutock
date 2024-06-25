@@ -17,10 +17,15 @@ class StockController extends Controller
 
         //今日の日付と消費期限の差分を取得
         foreach ($stocks as $stock) {
-            $limitDate = Carbon::parse($stock->limit);
-            $today = Carbon::today();
+            if ($stock->limit === null) {
+                //消費期限なし
+                array_push($diffDays, "消費期限なし");
+            } else {
+                $limitDate = Carbon::parse($stock->limit);
+                $today = Carbon::today();
 
-            array_push($diffDays, $today->diffInDays($limitDate, false));
+                array_push($diffDays, $today->diffInDays($limitDate, false));
+            }
         }
 
         return view('stockList', compact('stocks', 'diffDays'));
@@ -35,10 +40,15 @@ class StockController extends Controller
 
         //今日の日付と消費期限の差分を取得
         foreach ($coldStocks as $stock) {
-            $limitDate = Carbon::parse($stock->limit);
-            $today = Carbon::today();
+            if ($stock->limit === null) {
+                //消費期限なし
+                array_push($diffDays, "消費期限なし");
+            } else {
+                $limitDate = Carbon::parse($stock->limit);
+                $today = Carbon::today();
 
-            array_push($diffDays, $today->diffInDays($limitDate, false));
+                array_push($diffDays, $today->diffInDays($limitDate, false));
+            }
         }
 
         return view('stockList-cold', compact('coldStocks', 'diffDays'));
@@ -53,10 +63,15 @@ class StockController extends Controller
 
         //今日の日付と消費期限の差分を取得
         foreach ($iceStocks as $stock) {
-            $limitDate = Carbon::parse($stock->limit);
-            $today = Carbon::today();
+            if ($stock->limit === null) {
+                //消費期限なし
+                array_push($diffDays, "消費期限なし");
+            } else {
+                $limitDate = Carbon::parse($stock->limit);
+                $today = Carbon::today();
 
-            array_push($diffDays, $today->diffInDays($limitDate, false));
+                array_push($diffDays, $today->diffInDays($limitDate, false));
+            }
         }
 
         return view('stockList-ice', compact('iceStocks', 'diffDays'));
@@ -65,14 +80,20 @@ class StockController extends Controller
     //食材データの新規登録
     public function insertStock(Request $request)
     {
-        $limitDate = $request['limit-year'] . "-" . $request['limit-month'] . "-" . $request['limit-day'];
+        //消費期限欄が未入力か
+        $stocksLimitToggle = $request->input('stocksLimitToggle') ? true : false;
+
+        if ($stocksLimitToggle) {
+            $limitDate = $request['limit-year'] . "-" . $request['limit-month'] . "-" . $request['limit-day'];
+        }
 
         $stock = new Stock();
         $stock->name = $request['name'];
         $stock->type = $request['select-type'];
         $stock->piece = $request['piece'];
-        $stock->unit = $request['unit'];
-        $stock->limit = $limitDate;
+        if ($stocksLimitToggle) {
+            $stock->limit = $limitDate;
+        }
         $stock->save();
 
         return redirect('/stocks');
@@ -81,14 +102,20 @@ class StockController extends Controller
     //IDを指定したStockデータ1件の全カラムの内容を更新
     public function editStockData(int $stockId, Request $request)
     {
-        $editlimitDate = $request['limit-year'] . "-" . $request['limit-month'] . "-" . $request['limit-day'];
+        //消費期限欄が未入力か
+        $stocksLimitToggle = $request->input('stocksLimitToggle') ? true : false;
+
+        if ($stocksLimitToggle) {
+            $editlimitDate = $request['limit-year'] . "-" . $request['limit-month'] . "-" . $request['limit-day'];
+        }
 
         $editStock = Stock::Where('id', $stockId);
         $editStock->update(['name' => $request['name']]);
         $editStock->update(['type' => $request['select-type']]);
         $editStock->update(['piece' => $request['piece']]);
-        $editStock->update(['unit' => $request['unit']]);
-        $editStock->update(['limit' => $editlimitDate]);
+        if ($stocksLimitToggle) {
+            $editStock->update(['limit' => $editlimitDate]);
+        }
 
         return redirect('/stocks');
     }
@@ -96,10 +123,18 @@ class StockController extends Controller
     //対象の個数と期限のみを更新
     public function renewStockPieceAndLimit(int $stock_id, Request $request)
     {
-        $renewlimitDate = $request['limit-year'] . "-" . $request['limit-month'] . "-" . $request['limit-day'];
+        //消費期限欄が未入力か
+        $stocksLimitToggle = $request->input('stocksLimitToggle') ? true : false;
+
+        if ($stocksLimitToggle) {
+            $renewlimitDate = $request['limit-year'] . "-" . $request['limit-month'] . "-" . $request['limit-day'];
+        }
+
         $restoreStock = Stock::firstWhere('id', $stock_id);
         $restoreStock->update(['piece' => $request['piece']]);
-        $restoreStock->update(['limit' => $renewlimitDate]);
+        if ($stocksLimitToggle) {
+            $restoreStock->update(['limit' => $renewlimitDate]);
+        }
     }
 
     //Stockテーブルから1件削除

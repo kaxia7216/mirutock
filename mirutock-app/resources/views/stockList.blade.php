@@ -18,10 +18,12 @@
                             @if ($stock->piece < 1)
                                 <p>在庫なし</p>
                             @else
-                                <p>残り{{ $stock->piece }}{{ $stock->unit }}</p>
+                                <p>残り {{ $stock->piece }}</p>
                             @endif
-                            @if ($diffDays[$keys] > 0)
-                                <p>あと{{ $diffDays[$keys] }}日</p>
+                            @if ($diffDays[$keys] === "消費期限なし")
+                                <p>{{$diffDays[$keys]}}</p>
+                            @elseif ($diffDays[$keys] > 0)
+                                <p>あと {{ $diffDays[$keys] }}日</p>
                             @elseif ($diffDays[$keys] < 0)
                                 <p>期限切れ</p>
                             @else
@@ -47,7 +49,7 @@
             </ul>
         </div>
         <div class='add-button'>
-            <button class='modal-button'>
+            <button class='modal-button' onclick='addStockNewData()'>
                 +
             </button>
         </div>

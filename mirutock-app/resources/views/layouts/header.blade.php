@@ -25,7 +25,7 @@
     </div>
     <div class='header-right'>
         <a href="/" class="logout-link">topへ戻る</a>
-        <div class="hamburger-menu">
+        <div class="hamburger-menu" onclick='showHamburgerMenuLinks(event)'>
             <img src="/img/menu_icon.svg" alt="">
         </div>
         <div class="dropdown-menu">

@@ -24,7 +24,6 @@ class StockFactory extends Factory
         $type = $this->faker->randomElement(['cold', 'ice']);
         $numberOfItems = $this->faker->randomNumber(2, false);
         $piece = min(10, $numberOfItems);
-        $unit = $this->faker->randomElement(['本', '個', 'パック', '袋']);
 
         //ランダムな日付の生成
         $startDate = Carbon::parse('-1 year'); // 過去の範囲の開始日
@@ -35,7 +34,6 @@ class StockFactory extends Factory
             'name' => $this->faker->unique()->word,
             'type' => $type,
             'piece' => $piece,
-            'unit' => $unit,
             'limit' => $randomDate,
         ];
     }
