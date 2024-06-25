@@ -38,11 +38,13 @@ class ShopListController extends Controller
         $today = Carbon::today();
 
         foreach ($stocks as $stock) {
-            $limitDate = Carbon::parse($stock->limit);
-            $difflimitDate = $today->diffInDays($limitDate, false);
+            if ($stock->limit !== null) {
+                $limitDate = Carbon::parse($stock->limit);
+                $difflimitDate = $today->diffInDays($limitDate, false);
+            }
 
             //limitカラムの日付が残り1日以下、またはpieceカラムが1以下
-            if ($difflimitDate <= 1 || $stock->piece <= 1) {
+            if (($stock->limit !== null && $difflimitDate <= 1) || $stock->piece <= 1) {
                 $newShopList = new ShoppingList();
                 $newShopList->stock_id = $stock->id;
                 $newShopList->save();

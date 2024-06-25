@@ -46,50 +46,50 @@ function addStockNewData() {
     //フォームの内容を追加する処理
     const newCreateModal = document.getElementById("modal__content");
     newCreateModal.innerHTML = `
-<form action="/stock/new" method='POST' class='add-form'>
-  <fieldset>
-    <input type="hidden" name="_token" value="${csrfToken}">
-    <legend>食材の登録</legend>
-    <fieldset>
-      <label>名前</label>
-      <input type="text" name='name'>
-    </fieldset>
-    <fieldset class='pieces'>
-      <label>個数</label>
-      <button type='button' class='decrement-button' onclick='decrementPieces()'>
-        <img src="/img/left_arrow.svg" alt="left_arrow">
-      </button>
-      <input type="text" name='piece' value='0' id='piece-number'>
-      <button type='button' class='increment-button' onclick='incrementPieces()'>
-        <img src="/img/right_arrow.svg" alt="right_arro">
-      </button>
-    </fieldset>
-    <fieldset>
-      <label>保存先</label>
-      <select class='keep-select' name='select-type'>
-        <option value="" hidden>選択</option>
-        <option value="cold">冷蔵</option>
-        <option value="ice">冷凍</option>
-      </select>
-    </fieldset>
-    <fieldset id="stocks-limit">
-      <label>消費(賞味)期限</label>
-      <div class="toggle_button">
-        <input id="toggle" name='stocksLimitToggle'  class="toggle_input" type='checkbox' />
-        <label for="toggle" class="toggle_label"></label>
-      </div>
-      <div class='limit-form'>
-        <input type="text" name='limit-year' placeholder='year'>
-        <span>/</span>
-        <input type="text" name='limit-month' placeholder='month'>
-        <span>/</span>
-        <input type="text" name='limit-day' placeholder='day'>
-      </div>
-    </fieldset>
-    <button class='add-submit' type='submit'>追加</button>
-  </fieldset>
-</form>
-`;
+      <form action="/stock/new" method='POST' class='add-form'>
+        <fieldset>
+          <input type="hidden" name="_token" value="${csrfToken}">
+          <legend>食材の登録</legend>
+          <fieldset>
+            <label>名前</label>
+            <input type="text" name='name'>
+          </fieldset>
+          <fieldset class='pieces'>
+            <label>個数</label>
+            <button type='button' class='decrement-button' onclick='decrementPieces()'>
+              <img src="/img/left_arrow.svg" alt="left_arrow">
+            </button>
+            <input type="text" name='piece' value='0' id='piece-number'>
+            <button type='button' class='increment-button' onclick='incrementPieces()'>
+              <img src="/img/right_arrow.svg" alt="right_arro">
+            </button>
+          </fieldset>
+          <fieldset>
+            <label>保存先</label>
+            <select class='keep-select' name='select-type'>
+              <option value="" hidden>選択</option>
+              <option value="cold">冷蔵</option>
+              <option value="ice">冷凍</option>
+            </select>
+          </fieldset>
+          <fieldset id="stocks-limit">
+            <label>消費(賞味)期限</label>
+            <div class="toggle_button">
+              <input id="toggle" name='stocksLimitToggle'  class="toggle_input" type='checkbox' />
+              <label for="toggle" class="toggle_label"></label>
+            </div>
+            <div class='limit-form'>
+              <input type="text" name='limit-year' placeholder='year'>
+              <span>/</span>
+              <input type="text" name='limit-month' placeholder='month'>
+              <span>/</span>
+              <input type="text" name='limit-day' placeholder='day'>
+            </div>
+          </fieldset>
+          <button class='add-submit' type='submit'>追加</button>
+        </fieldset>
+      </form>
+    `;
 
     // モーダル内の消費期限入力欄表示の切り替え
     controlStocksLimitToggle("toggle");
@@ -102,58 +102,65 @@ function editStockData(stock) {
 
     //フォームの内容を追加する処理
     const editModal = document.getElementById("modal__content");
-    const limitDate = stock.limit.split("-");
+    if (stock.limit !== null) {
+        const limitDate = stock.limit.split("-");
+    }
+
     let htmlString = `
-<form action="/stock/edit/${stock.id}" method='POST' class='add-form'>
-  <fieldset>
-    <input type="hidden" name="_token" value="${csrfToken}">
-    <legend>登録内容の変更</legend>
-    <fieldset>
-      <label>名前</label>
-      <input type="text" name='name' value='${stock.name}'>
-    </fieldset>
-    <fieldset class='pieces'>
-      <label>個数</label>
-      <button type='button' class='decrement-button' onclick='decrementPieces()'>
-        <img src="/img/left_arrow.svg" alt="left_arrow">
-      </button>
-      <input type="text" name='piece' value='${stock.piece}' id='piece-number'>
-      <button type='button' class='increment-button' onclick='incrementPieces()'>
-        <img src="/img/right_arrow.svg" alt="right_arro">
-      </button>
-    </fieldset>
-`;
+        <form action="/stock/edit/${stock.id}" method='POST' class='add-form'>
+          <fieldset>
+            <input type="hidden" name="_token" value="${csrfToken}">
+            <legend>登録内容の変更</legend>
+            <fieldset>
+              <label>名前</label>
+              <input type="text" name='name' value='${stock.name}'>
+            </fieldset>
+            <fieldset class='pieces'>
+              <label>個数</label>
+              <button type='button' class='decrement-button' onclick='decrementPieces()'>
+                <img src="/img/left_arrow.svg" alt="left_arrow">
+              </button>
+              <input type="text" name='piece' value='${stock.piece}' id='piece-number'>
+              <button type='button' class='increment-button' onclick='incrementPieces()'>
+                <img src="/img/right_arrow.svg" alt="right_arro">
+              </button>
+            </fieldset>
+      `;
 
     if (stock.type === "cold") {
         htmlString += `
-  <fieldset>
-    <label>保存先</label>
-    <select class='keep-select' name='select-type'>
-      <option value="" hidden>選択</option>
-      <option value="cold" selected>冷蔵</option>
-      <option value="ice">冷凍</option>
-    </select>
-  </fieldset>
-  `;
+          <fieldset>
+            <label>保存先</label>
+            <select class='keep-select' name='select-type'>
+              <option value="" hidden>選択</option>
+              <option value="cold" selected>冷蔵</option>
+              <option value="ice">冷凍</option>
+            </select>
+          </fieldset>
+        `;
     } else {
         htmlString += `
-  <fieldset>
-    <label>保存先</label>
-    <select class='keep-select' name='select-type'>
-      <option value="" hidden>選択</option>
-      <option value="cold">冷蔵</option>
-      <option value="ice" selected>冷凍</option>
-    </select>
-  </fieldset>
-  `;
+          <fieldset>
+            <label>保存先</label>
+            <select class='keep-select' name='select-type'>
+              <option value="" hidden>選択</option>
+              <option value="cold">冷蔵</option>
+              <option value="ice" selected>冷凍</option>
+            </select>
+          </fieldset>
+        `;
     }
 
     htmlString += `
-          <label>消費(賞味)期限</label>
-          <div class="toggle_button">
-            <input id="toggle-edit" name='stocksLimitToggle' class="toggle_input" type='checkbox' />
-            <label for="toggle" class="toggle_label"></label>
-          </div>
+      <label>消費(賞味)期限</label>
+      <div class="toggle_button">
+        <input id="toggle-edit" name='stocksLimitToggle' class="toggle_input" type='checkbox' />
+        <label for="toggle" class="toggle_label"></label>
+      </div>
+    `;
+
+    if (stock.limit !== null) {
+        htmlString += `
           <div class='limit-form'>
             <input type="text" name='limit-year' value='${limitDate[0]}'>
             <span>/</span>
@@ -161,11 +168,25 @@ function editStockData(stock) {
             <span>/</span>
             <input type="text" name='limit-day' value='${limitDate[2]}'>
           </div>
-        </fieldset>
-      <button class='add-submit' type='submit'>変更</button>
-    </fieldset>
-  </form>
-`;
+        `;
+    } else {
+        htmlString += `
+          <div class='limit-form'>
+            <input type="text" name='limit-year' placeholder='year'>
+            <span>/</span>
+            <input type="text" name='limit-month' placeholder='month'>
+            <span>/</span>
+            <input type="text" name='limit-day' placeholder='day'>
+          </div>
+        `;
+    }
+
+    htmlString += `
+              </fieldset>
+            <button class='add-submit' type='submit'>変更</button>
+          </fieldset>
+        </form>
+    `;
 
     editModal.innerHTML = htmlString;
 
@@ -179,13 +200,16 @@ function renewShopListData(shopList) {
     modal.style.transform = "translateX(-50%) translateY(0)";
 
     const editModal = document.getElementById("modal__content");
-    const limitDate = shopList.limit.split("-");
+    if (shopList.limit !== null) {
+        const limitDate = shopList.limit.split("-");
+    }
+
     let htmlString = `
-<form action="/shoplist/renew/${shopList.id}" method='POST' class='add-form'>
-  <fieldset>
-    <input type="hidden" name="_token" value="${csrfToken}">
-    <legend>食材の再追加</legend>
-`;
+      <form action="/shoplist/renew/${shopList.id}" method='POST' class='add-form'>
+        <fieldset>
+          <input type="hidden" name="_token" value="${csrfToken}">
+          <legend>食材の再追加</legend>
+    `;
 
     if (shopList.type === "cold") {
         htmlString += `<legend>${shopList.name} : 冷蔵</legend>`;
@@ -194,33 +218,51 @@ function renewShopListData(shopList) {
     }
 
     htmlString += `
-          <fieldset class='pieces'>
-            <label>個数</label>
-            <button type='button' class='decrement-button' onclick='decrementPieces()'>
-              <img src="/img/left_arrow.svg" alt="left_arrow">
-            </button>
-            <input type="text" name='piece' value='${shopList.piece}' id='piece-number'>
-            <button type='button' class='increment-button' onclick='incrementPieces()'>
-              <img src="/img/right_arrow.svg" alt="right_arro">
-            </button>
-          </fieldset>
-          <label>消費(賞味)期限</label>
-          <div class="toggle_button">
-            <input id="toggle-renew" name='stocksLimitToggle' class="toggle_input" type='checkbox' />
-            <label for="toggle" class="toggle_label"></label>
-          </div>
-          <div class='limit-form'>
-            <input type="text" name='limit-year' value='${limitDate[0]}'>
-            <span>/</span>
-            <input type="text" name='limit-month' value='${limitDate[1]}'>
-            <span>/</span>
-            <input type="text" name='limit-day' value='${limitDate[2]}'>
-          </div>
+      <fieldset class='pieces'>
+        <label>個数</label>
+        <button type='button' class='decrement-button' onclick='decrementPieces()'>
+          <img src="/img/left_arrow.svg" alt="left_arrow">
+        </button>
+        <input type="text" name='piece' value='${shopList.piece}' id='piece-number'>
+        <button type='button' class='increment-button' onclick='incrementPieces()'>
+          <img src="/img/right_arrow.svg" alt="right_arro">
+        </button>
+      </fieldset>
+      <label>消費(賞味)期限</label>
+      <div class="toggle_button">
+        <input id="toggle-renew" name='stocksLimitToggle' class="toggle_input" type='checkbox' />
+        <label for="toggle" class="toggle_label"></label>
+      </div>
+    `;
+
+    if (shopList.limit !== null) {
+        htmlString += `
+        <div class='limit-form'>
+          <input type="text" name='limit-year' value='${limitDate[0]}'>
+          <span>/</span>
+          <input type="text" name='limit-month' value='${limitDate[1]}'>
+          <span>/</span>
+          <input type="text" name='limit-day' value='${limitDate[2]}'>
+        </div>
+      `;
+    } else {
+        htmlString += `
+        <div class='limit-form'>
+          <input type="text" name='limit-year' placeholder='year'>
+          <span>/</span>
+          <input type="text" name='limit-month' placeholder='month'>
+          <span>/</span>
+          <input type="text" name='limit-day' placeholder='day'>
+        </div>
+      `;
+    }
+
+    htmlString += `
+            </fieldset>
+          <button class='add-submit' type='submit'>変更</button>
         </fieldset>
-      <button class='add-submit' type='submit'>変更</button>
-    </fieldset>
-  </form>
-`;
+      </form>
+    `;
 
     editModal.innerHTML = htmlString;
 
