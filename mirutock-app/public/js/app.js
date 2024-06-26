@@ -38,6 +38,50 @@ function controlStocksLimitToggle(toggleInput) {
     toggleStocksLimitFormDisplay(toggleInputInModal, limitFormInModal);
 }
 
+function setSelectedStockType(stockType) {
+    const options = {
+        cold: "<option value='cold' selected>冷蔵</option><option value='ice'>冷凍</option>",
+        ice: "<option value='cold'>冷蔵</option><option value='ice' selected>冷凍</option>",
+    };
+
+    return `
+      <fieldset>
+        <label>保存先</label>
+        <select class='keep-select' name='select-type'>
+          <option value="" hidden>選択</option>
+          ${
+              options[stockType] ||
+              "<option value='cold'>冷蔵</option><option value='ice'>冷凍</option>"
+          }
+        </select>
+      </fieldset>
+    `;
+}
+
+function setStockLimit(stockLimit, limitDate) {
+    if (stockLimit !== null) {
+        return `
+        <div class='limit-form'>
+          <input type="text" name='limit-year' value='${limitDate[0]}'>
+          <span>/</span>
+          <input type="text" name='limit-month' value='${limitDate[1]}'>
+          <span>/</span>
+          <input type="text" name='limit-day' value='${limitDate[2]}'>
+        </div>
+      `;
+    } else {
+        return `
+          <div class='limit-form'>
+            <input type="text" name='limit-year' placeholder='year'>
+            <span>/</span>
+            <input type="text" name='limit-month' placeholder='month'>
+            <span>/</span>
+            <input type="text" name='limit-day' placeholder='day'>
+          </div>
+        `;
+    }
+}
+
 //新規追加時のモーダル表示
 function addStockNewData() {
     layer.classList.add("active");
@@ -102,8 +146,10 @@ function editStockData(stock) {
 
     //フォームの内容を追加する処理
     const editModal = document.getElementById("modal__content");
+    let limitDate = [];
+
     if (stock.limit !== null) {
-        const limitDate = stock.limit.split("-");
+        limitDate = stock.limit.split("-");
     }
 
     let htmlString = `
@@ -127,29 +173,8 @@ function editStockData(stock) {
             </fieldset>
       `;
 
-    if (stock.type === "cold") {
-        htmlString += `
-          <fieldset>
-            <label>保存先</label>
-            <select class='keep-select' name='select-type'>
-              <option value="" hidden>選択</option>
-              <option value="cold" selected>冷蔵</option>
-              <option value="ice">冷凍</option>
-            </select>
-          </fieldset>
-        `;
-    } else {
-        htmlString += `
-          <fieldset>
-            <label>保存先</label>
-            <select class='keep-select' name='select-type'>
-              <option value="" hidden>選択</option>
-              <option value="cold">冷蔵</option>
-              <option value="ice" selected>冷凍</option>
-            </select>
-          </fieldset>
-        `;
-    }
+    //保存タイプによる、表示の切り替え
+    htmlString += setSelectedStockType(stock.type);
 
     htmlString += `
       <label>消費(賞味)期限</label>
@@ -159,27 +184,8 @@ function editStockData(stock) {
       </div>
     `;
 
-    if (stock.limit !== null) {
-        htmlString += `
-          <div class='limit-form'>
-            <input type="text" name='limit-year' value='${limitDate[0]}'>
-            <span>/</span>
-            <input type="text" name='limit-month' value='${limitDate[1]}'>
-            <span>/</span>
-            <input type="text" name='limit-day' value='${limitDate[2]}'>
-          </div>
-        `;
-    } else {
-        htmlString += `
-          <div class='limit-form'>
-            <input type="text" name='limit-year' placeholder='year'>
-            <span>/</span>
-            <input type="text" name='limit-month' placeholder='month'>
-            <span>/</span>
-            <input type="text" name='limit-day' placeholder='day'>
-          </div>
-        `;
-    }
+    //消費期限の有無による、表示の切り替え
+    htmlString += setStockLimit(stock.limit, limitDate);
 
     htmlString += `
               </fieldset>
@@ -200,8 +206,10 @@ function renewShopListData(shopList) {
     modal.style.transform = "translateX(-50%) translateY(0)";
 
     const editModal = document.getElementById("modal__content");
+    let limitDate = [];
+
     if (shopList.limit !== null) {
-        const limitDate = shopList.limit.split("-");
+        limitDate = shopList.limit.split("-");
     }
 
     let htmlString = `
@@ -235,27 +243,8 @@ function renewShopListData(shopList) {
       </div>
     `;
 
-    if (shopList.limit !== null) {
-        htmlString += `
-        <div class='limit-form'>
-          <input type="text" name='limit-year' value='${limitDate[0]}'>
-          <span>/</span>
-          <input type="text" name='limit-month' value='${limitDate[1]}'>
-          <span>/</span>
-          <input type="text" name='limit-day' value='${limitDate[2]}'>
-        </div>
-      `;
-    } else {
-        htmlString += `
-        <div class='limit-form'>
-          <input type="text" name='limit-year' placeholder='year'>
-          <span>/</span>
-          <input type="text" name='limit-month' placeholder='month'>
-          <span>/</span>
-          <input type="text" name='limit-day' placeholder='day'>
-        </div>
-      `;
-    }
+    //消費期限の有無による、表示の切り替え
+    htmlString += setStockLimit(shopList.limit, limitDate);
 
     htmlString += `
             </fieldset>
