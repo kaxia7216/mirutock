@@ -66,7 +66,11 @@ function createModalForm(actionURL, editMode = false, inputObject = {}) {
               } name='stocksLimitToggle'  class="toggle_input" type='checkbox' />
               <label for="toggle" class="toggle_label"></label>
             </div>
-            ${editMode ? setStockLimit(inputObject.limit) : baseStockLimitText}
+            ${
+                editMode && inputObject.limit !== null
+                    ? setStockLimit(inputObject.limit)
+                    : baseStockLimitText
+            }
           </fieldset>
           <button class='add-submit' type='submit'>${
               editMode ? "変更" : "追加"
@@ -127,31 +131,17 @@ function setSelectedStockType(stockType) {
 }
 
 function setStockLimit(stockLimit) {
-    let limitDate = [];
+    let limitDate = stockLimit.split("-");
 
-    if (stockLimit !== null) {
-        limitDate = stockLimit.split("-");
-
-        return `
-        <div class='limit-form'>
-          <input type="text" name='limit-year' value='${limitDate[0]}'>
-          <span>/</span>
-          <input type="text" name='limit-month' value='${limitDate[1]}'>
-          <span>/</span>
-          <input type="text" name='limit-day' value='${limitDate[2]}'>
-        </div>
-      `;
-    } else {
-        return `
-          <div class='limit-form'>
-            <input type="text" name='limit-year' placeholder='year'>
-            <span>/</span>
-            <input type="text" name='limit-month' placeholder='month'>
-            <span>/</span>
-            <input type="text" name='limit-day' placeholder='day'>
-          </div>
-        `;
-    }
+    return `
+    <div class='limit-form'>
+      <input type="text" name='limit-year' value='${limitDate[0]}'>
+      <span>/</span>
+      <input type="text" name='limit-month' value='${limitDate[1]}'>
+      <span>/</span>
+      <input type="text" name='limit-day' value='${limitDate[2]}'>
+    </div>
+  `;
 }
 
 //新規追加時のモーダル表示
