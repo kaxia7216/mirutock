@@ -195,16 +195,20 @@ function editStockData(stock, errors = []) {
 }
 
 //追加購入した食材を更新するモーダル
-function renewShopListData(shopList) {
+function renewShopListData(shopList, errors = []) {
     layer.classList.add("active");
     modal.style.transform = "translateX(-50%) translateY(0)";
 
     const editModal = document.getElementById("modal__content");
+    let errorMessages = ``;
+    errorMessages += errors ? createErrorMessages(errors) : "";
+
     editModal.innerHTML = `
       <form action="/shoplist/renew/${
           shopList.id
       }" method='POST' class='add-form'>
         <fieldset>
+          ${errorMessages}
           <input type="hidden" name="_token" value="${csrfToken}">
           <input type="hidden" name="_method" value="PUT">
           <legend>食材の再追加</legend>

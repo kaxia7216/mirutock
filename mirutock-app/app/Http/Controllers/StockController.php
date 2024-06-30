@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\StockRequest;
+use App\Http\Requests\ShopListRequest;
 use App\Models\Stock;
 use Carbon\Carbon;
 
@@ -122,7 +123,7 @@ class StockController extends Controller
     }
 
     //対象の個数と期限のみを更新
-    public function renewStockPieceAndLimit(int $stock_id, StockRequest $request)
+    public function renewStockPieceAndLimit(int $stock_id, ShopListRequest $request)
     {
         //消費期限欄が未入力か
         $stocksLimitToggle = $request->input('stocksLimitToggle') ? true : false;
