@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\StockRequest;
+use App\Http\Requests\ShopListRequest;
 use App\Models\Stock;
 use Carbon\Carbon;
 
@@ -78,7 +80,7 @@ class StockController extends Controller
     }
 
     //食材データの新規登録
-    public function insertStock(Request $request)
+    public function insertStock(StockRequest $request)
     {
         //消費期限欄が未入力か
         $stocksLimitToggle = $request->input('stocksLimitToggle') ? true : false;
@@ -100,7 +102,7 @@ class StockController extends Controller
     }
 
     //IDを指定したStockデータ1件の全カラムの内容を更新
-    public function editStockData(int $stockId, Request $request)
+    public function editStockData(int $stockId, StockRequest $request)
     {
         //消費期限欄が未入力か
         $stocksLimitToggle = $request->input('stocksLimitToggle') ? true : false;
@@ -109,7 +111,7 @@ class StockController extends Controller
             $editlimitDate = $request['limit-year'] . "-" . $request['limit-month'] . "-" . $request['limit-day'];
         }
 
-        $editStock = Stock::Where('id', $stockId);
+        $editStock = Stock::findOrFail('id', $stockId);
         $editStock->update(['name' => $request['name']]);
         $editStock->update(['type' => $request['select-type']]);
         $editStock->update(['piece' => $request['piece']]);
@@ -121,7 +123,7 @@ class StockController extends Controller
     }
 
     //対象の個数と期限のみを更新
-    public function renewStockPieceAndLimit(int $stock_id, Request $request)
+    public function renewStockPieceAndLimit(int $stock_id, ShopListRequest $request)
     {
         //消費期限欄が未入力か
         $stocksLimitToggle = $request->input('stocksLimitToggle') ? true : false;

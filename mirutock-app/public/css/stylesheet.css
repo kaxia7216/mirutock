@@ -671,7 +671,7 @@ fieldset {
     position: relative;
     width: 55px;
     height: 22px;
-    /* margin: auto; */
+    margin-top: 5px;
 }
 
 /* 以下、レスポンシブ対応 */

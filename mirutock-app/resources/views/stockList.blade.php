@@ -20,8 +20,8 @@
                             @else
                                 <p>残り {{ $stock->piece }}</p>
                             @endif
-                            @if ($diffDays[$keys] === "消費期限なし")
-                                <p>{{$diffDays[$keys]}}</p>
+                            @if ($diffDays[$keys] === '消費期限なし')
+                                <p>{{ $diffDays[$keys] }}</p>
                             @elseif ($diffDays[$keys] > 0)
                                 <p>あと {{ $diffDays[$keys] }}日</p>
                             @elseif ($diffDays[$keys] < 0)
@@ -61,6 +61,23 @@
         <script src="{{ asset('js/app.js') }}" type="text/javascript"></script>
     @else
         <script src="{{ secure_asset('js/app.js') }}" type="text/javascript"></script>
+    @endif
+    @if (count($errors) > 0)
+        <script>
+            let getErrors = @json($errors->all());
+            @if (session('edit_mode') && session('edit_mode') == true)
+                let oldStock = {
+                    id: {{ session('model_id') }},
+                    name: "{{ old('name') }}",
+                    type: "{{ old('select-type') }}",
+                    piece: {{ old('piece') }},
+                    limit: "{{ old('limit') }}"
+                };
+                editStockData(oldStock, getErrors);
+            @else
+                addStockNewData(getErrors);
+            @endif
+        </script>
     @endif
 </body>
 

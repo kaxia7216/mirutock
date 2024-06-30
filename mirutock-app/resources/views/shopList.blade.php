@@ -46,6 +46,19 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     @if (app()->environment('local'))
         <script src="{{ asset('js/app.js') }}" type="text/javascript"></script>
+        <script>
+            @if (count($errors) > 0)
+                let getErrors = @json($errors->all());
+                let shopList = {
+                    id: {{ $shopList->id }},
+                    name: "{{ $shopList->name }}",
+                    type: "{{ $shopList->type }}",
+                    piece: {{ $shopList->piece }},
+                    limit: "{{ $shopList->limit }}"
+                };
+                renewShopListData(shopList, getErrors);
+            @endif
+        </script>
     @else
         <script src="{{ secure_asset('js/app.js') }}" type="text/javascript"></script>
     @endif
