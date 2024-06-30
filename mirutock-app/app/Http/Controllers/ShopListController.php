@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\StockRequest;
 use App\Models\ShoppingList;
 use App\Models\Stock;
 use Carbon\Carbon;
@@ -53,11 +54,12 @@ class ShopListController extends Controller
     }
 
     //Stockテーブルへ食材データの更新、および買い物リストからの削除
-    public function restoreToStock(int $shopList_id, Request $request)
+    public function restoreToStock(int $shopList_id, StockRequest $request)
     {
         $renewShopList = ShoppingList::firstWhere('id', $shopList_id);
 
         $stockController = new StockController();
+        // $stockRequest = new StockRequest($request->all());
         $stockController->renewStockPieceAndLimit($renewShopList->stock_id, $request);
 
         $renewShopList->delete();

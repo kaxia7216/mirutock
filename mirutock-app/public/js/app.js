@@ -7,8 +7,22 @@ const layer = document.querySelector(".layer");
 const modal = document.querySelector(".modal");
 
 let dropdownMenuVisible = false;
+let baseStockLimitText = `
+<div class='limit-form'>
+  <input type="text" name='limit-year' placeholder='year'>
+  <span>/</span>
+  <input type="text" name='limit-month' placeholder='month'>
+  <span>/</span>
+  <input type="text" name='limit-day' placeholder='day'>
+</div>
+`;
 
-function createModalForm(actionURL, editMode = false, inputObject = {}) {
+function createModalForm(
+    actionURL,
+    editMode = false,
+    inputObject = {},
+    errors = []
+) {
     let baseStickTypeText = `
         <fieldset>
           <label>保存先</label>
@@ -20,26 +34,21 @@ function createModalForm(actionURL, editMode = false, inputObject = {}) {
         </fieldset>
       `;
 
-    let baseStockLimitText = `
-          <div class='limit-form'>
-            <input type="text" name='limit-year' placeholder='year'>
-            <span>/</span>
-            <input type="text" name='limit-month' placeholder='month'>
-            <span>/</span>
-            <input type="text" name='limit-day' placeholder='day'>
-          </div>
-      `;
+    let errorMessages = ``;
+    errorMessages += errors ? createErrorMessages(errors) : "";
 
     return `
       <form action="${actionURL}" method='POST' class='add-form'>
         <fieldset>
+          ${errorMessages}
           <input type="hidden" name="_token" value="${csrfToken}">
+          ${editMode ? `<input type="hidden" name="_method" value="PUT">` : ""}
           <legend>${editMode ? "登録内容の変更" : "食材の登録"}</legend>
           <fieldset>
             <label>名前</label>
-            <input type="text" name='name' value='${
+            <input type="text" name='name' value=${
                 editMode ? inputObject.name : ""
-            }'>
+            }>
           </fieldset>
           <fieldset class='pieces'>
             <label>個数</label>
@@ -78,6 +87,16 @@ function createModalForm(actionURL, editMode = false, inputObject = {}) {
         </fieldset>
       </form>
     `;
+}
+
+function createErrorMessages(errors) {
+    let createdErrorMessages = `<ul class="error">`;
+    errors.forEach((error) => {
+        createdErrorMessages += `<li>${error}</li>`;
+    });
+    createdErrorMessages += `</ul>`;
+
+    return createdErrorMessages;
 }
 
 //個数入力の矢印ボタンの操作
@@ -145,20 +164,20 @@ function setStockLimit(stockLimit) {
 }
 
 //新規追加時のモーダル表示
-function addStockNewData() {
+function addStockNewData(errors = []) {
     layer.classList.add("active");
     modal.style.transform = "translateX(-50%) translateY(0)";
 
     //フォームの内容を追加する処理
     const newCreateModal = document.getElementById("modal__content");
-    newCreateModal.innerHTML = createModalForm(`/stock/new`);
+    newCreateModal.innerHTML = createModalForm(`/stock/new`, false, {}, errors);
 
     // モーダル内の消費期限入力欄表示の切り替え
     controlStocksLimitToggle("toggle");
 }
 
 //編集時のモーダル表示
-function editStockData(stock) {
+function editStockData(stock, errors = []) {
     layer.classList.add("active");
     modal.style.transform = "translateX(-50%) translateY(0)";
 
@@ -167,7 +186,8 @@ function editStockData(stock) {
     editModal.innerHTML = createModalForm(
         `/stock/edit/${stock.id}`,
         true,
-        stock
+        stock,
+        errors
     );
 
     // モーダル内の消費期限入力欄表示の切り替え
@@ -186,6 +206,7 @@ function renewShopListData(shopList) {
       }" method='POST' class='add-form'>
         <fieldset>
           <input type="hidden" name="_token" value="${csrfToken}">
+          <input type="hidden" name="_method" value="PUT">
           <legend>食材の再追加</legend>
           ${
               shopList.type === "cold"
@@ -201,7 +222,7 @@ function renewShopListData(shopList) {
                 shopList.piece
             }' id='piece-number'>
             <button type='button' class='increment-button' onclick='incrementPieces()'>
-              <img src="/img/right_arrow.svg" alt="right_arro">
+              <img src="/img/right_arrow.svg" alt="right_arrow">
             </button>
           </fieldset>
           <label>消費(賞味)期限</label>
@@ -209,7 +230,11 @@ function renewShopListData(shopList) {
             <input id="toggle-renew" name='stocksLimitToggle' class="toggle_input" type='checkbox' />
             <label for="toggle" class="toggle_label"></label>
           </div>
-          ${setStockLimit(shopList.limit)}
+          ${
+              shopList.limit !== null
+                  ? setStockLimit(shopList.limit)
+                  : baseStockLimitText
+          }
         </fieldset>
         <button class='add-submit' type='submit'>変更</button>
       </form>

@@ -62,6 +62,23 @@
     @else
         <script src="{{ secure_asset('js/app.js') }}" type="text/javascript"></script>
     @endif
+    @if(count($errors) > 0)
+        <script>
+            let getErrors = @json($errors->all());
+            @if (session('edit_mode') && session('edit_mode') == true)
+                let oldStock = {
+                    id: {{ session('model_id') }},
+                    name: "{{ old('name') }}",
+                    type: "{{ old('select-type') }}",
+                    piece: {{ old('piece') }},
+                    limit: "{{ old('limit') }}"
+                };
+                editStockData(oldStock, getErrors);
+            @else
+                addStockNewData(getErrors);
+            @endif
+        </script>
+    @endif
 </body>
 
 </html>
