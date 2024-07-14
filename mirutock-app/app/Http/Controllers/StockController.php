@@ -111,7 +111,7 @@ class StockController extends Controller
             $editlimitDate = $request['limit-year'] . "-" . $request['limit-month'] . "-" . $request['limit-day'];
         }
 
-        $editStock = Stock::findOrFail('id', $stockId);
+        $editStock = Stock::findOrFail($stockId);
         $editStock->update(['name' => $request['name']]);
         $editStock->update(['type' => $request['select-type']]);
         $editStock->update(['piece' => $request['piece']]);
