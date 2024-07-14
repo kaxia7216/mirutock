@@ -9,7 +9,7 @@
 [ワイヤーフレーム](https://www.figma.com/file/w9Ysrut5NUpttBrJy1xLDw/Mirutock?type=design&node-id=30%3A2&mode=design&t=QZkBWFLtqUAagqDD-1)
 
 ## ER図
-![Mirutock_ER図](https://www.plantuml.com/plantuml/png/PO_D3OCm38Nldi8BP0E4EFNI8L14hDPgVYBY711qznee5IgNVD9B_EMvAs97gS43K1IM2MkXiU0CYEnGpsW38Rn_zqNIyBe-m6smrwXfRlUsrK2cJ8hCDAoiaKNXER0OPuNEqcVAcUEZzrpaa0FkdvsaEh7tMnPZqlmj0nkEy5y6q55qwueV)
+![Mirutock_ER図](https://www.plantuml.com/plantuml/png/NOuz3i8m34Ptdy8No0sggXCBXwYYnWAB_4JaOwWQxew3W87bUzDxzjBWxtYaI9AXsBcXRBV61p5hODliamnYhsAeAjjWrAHmmKFeIJ_vMchLV5cZDdmZDk_eQhrfEftdUHZqETIxS-NuCscH7Eof5m00)
 
 ## システム構成図
 ![](./Mirutock.drawio.svg)
