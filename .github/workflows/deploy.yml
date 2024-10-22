@@ -6,6 +6,7 @@ on:
       - main
 
 env:
+  DEPLOY_APP_KEY: ${{ secrets.DEPLOY_APP_KEY }}
   AWS_ACCOUNT_ID: ${{ secrets.AWS_ACCOUNT_ID }}
   AWS_DB_USERNAME: ${{ secrets.AWS_DB_USERNAME }}
   AWS_DB_HOST: ${{ secrets.AWS_DB_HOST }}
@@ -27,6 +28,7 @@ jobs:
       - name: Renew envMirutockFile
         id: renew-env
         run: |
+          sed -i 's|\[APP_KEY\]|${{ env.DEPLOY_APP_KEY }}|g' ./mirutock-app/.env.mirutock
           sed -i 's|\[DB_USERNAME\]|${{ env.AWS_DB_USERNAME }}|g' ./mirutock-app/.env.mirutock
           sed -i 's|\[DB_HOST\]|${{ env.AWS_DB_HOST }}|g' ./mirutock-app/.env.mirutock
           sed -i 's|\[DB_DATABASE\]|${{ env.AWS_DB_DATABASE }}|g' ./mirutock-app/.env.mirutock
