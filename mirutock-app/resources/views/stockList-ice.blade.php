@@ -33,7 +33,8 @@
                                 <img src="/img/pencil_icon.svg" alt="edit-button">
                             </button>
                             <button onclick="return confirm('{{ $stock->name }}を在庫リストから削除しますか？')"
-                                form='stock-delete-{{ $stock->id }}'>
+                                form='stock-delete-{{ $stock->id }}'
+                                class='delete-button'>
                                 <img src="/img/delete_icon.svg" alt="delete-icon">
                             </button>
                         </div>

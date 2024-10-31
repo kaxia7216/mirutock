@@ -11,10 +11,10 @@
             <ul>
                 @foreach ($shopLists as $shopList)
                     <li>
-                        <div class='list-left'>
+                        <div class='list-left shop-only-style-left'>
                             <p>{{ $shopList->name }}</p>
                         </div>
-                        <div class='list-right'>
+                        <div class='list-right shop-only-style-right'>
                             <form id="shop-delete-{{ $shopList->id }}" action="/delete/shopList/{{ $shopList->id }}"
                                 method="POST">
                                 @csrf
@@ -24,7 +24,8 @@
                                 <img src="/img/pencil_icon.svg" alt="edit-button">
                             </button>
                             <button onclick="return confirm('{{ $shopList->name }}を買い物リストから削除しますか？')"
-                                form='shop-delete-{{ $shopList->id }}'>
+                                form='shop-delete-{{ $shopList->id }}'
+                                class='delete-button'>
                                 <img src="/img/delete_icon.svg" alt="delete-icon">
                             </button>
                         </div>
